@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kollection Space</title>
+    <meta
+      name="description"
+      content="A static collection board demo prepared for Vercel hosting and optional Supabase persistence."
+    >
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2317211f'/%3E%3Cpath d='M18 20h28v8H18zM18 34h18v8H18z' fill='%23d8ad4f'/%3E%3Cpath d='M40 34h6v8h-6z' fill='%23c96c53'/%3E%3C/svg%3E"
+    >
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Collection workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Static demo</p>
+            <h1>Kollection Space</h1>
+          </div>
+          <div class="sync-status" id="syncStatus" aria-live="polite">
+            Local mode
+          </div>
+        </header>
+
+        <section class="hero-panel" aria-label="Overview">
+          <div class="hero-copy">
+            <p class="eyebrow">Curate, tag, revisit</p>
+            <h2>Your tiny archive for finds worth keeping.</h2>
+            <p>
+              Add references, track their stage, filter by category, and keep the
+              data locally until Supabase is connected.
+            </p>
+          </div>
+          <div class="visual-board" aria-hidden="true">
+            <div class="visual-card card-a">
+              <span></span>
+              <strong>Design notes</strong>
+            </div>
+            <div class="visual-card card-b">
+              <span></span>
+              <strong>Market reads</strong>
+            </div>
+            <div class="visual-card card-c">
+              <span></span>
+              <strong>Launch ideas</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="controls" aria-label="Collection controls">
+          <form class="item-form" id="itemForm">
+            <label>
+              <span>Title</span>
+              <input
+                id="titleInput"
+                name="title"
+                type="text"
+                maxlength="80"
+                placeholder="A useful link, idea, or artifact"
+                required
+              >
+            </label>
+            <label>
+              <span>Category</span>
+              <select id="categoryInput" name="category">
+                <option>Research</option>
+                <option>Design</option>
+                <option>Product</option>
+                <option>Inspiration</option>
+              </select>
+            </label>
+            <label>
+              <span>Stage</span>
+              <select id="stageInput" name="stage">
+                <option>New</option>
+                <option>Reviewing</option>
+                <option>Saved</option>
+              </select>
+            </label>
+            <button type="submit">Add item</button>
+          </form>
+
+          <div class="filter-row">
+            <label class="search-label">
+              <span>Search</span>
+              <input id="searchInput" type="search" placeholder="Filter collection">
+            </label>
+            <div class="segmented" aria-label="Filter by stage">
+              <button class="active" type="button" data-stage-filter="All">All</button>
+              <button type="button" data-stage-filter="New">New</button>
+              <button type="button" data-stage-filter="Reviewing">Reviewing</button>
+              <button type="button" data-stage-filter="Saved">Saved</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="board" aria-label="Saved items">
+          <div class="board-heading">
+            <h2>Collection</h2>
+            <span id="itemCount">0 items</span>
+          </div>
+          <div class="item-grid" id="itemGrid"></div>
+          <p class="empty-state" id="emptyState">Nothing matches this view yet.</p>
+        </section>
+      </section>
+
+      <aside class="setup-panel" aria-label="Deployment setup">
+        <div class="setup-block">
+          <p class="eyebrow">Next stop</p>
+          <h2>Vercel + Supabase ready</h2>
+          <p>
+            This page is static, so it can deploy as-is. Add Supabase credentials
+            later to persist the same collection table in the cloud.
+          </p>
+        </div>
+        <div class="setup-list">
+          <div>
+            <span>1</span>
+            <p>Create a Supabase table named <code>items</code>.</p>
+          </div>
+          <div>
+            <span>2</span>
+            <p>Add your project URL and anon key in <code>supabase-config.js</code>.</p>
+          </div>
+          <div>
+            <span>3</span>
+            <p>Import this folder into Vercel as a static project.</p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
