@@ -1,0 +1,14 @@
+{
+  "name": "kollection-gallery",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "cache:photos": "node tools/cache-photos.mjs",
+    "download:x-hd": "node tools/download-x-hd-from-manifest.mjs",
+    "serve": "python3 -m http.server 4173"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0"
+  }
+}

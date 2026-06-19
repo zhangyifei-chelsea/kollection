@@ -1,50 +1,81 @@
-# Kollection Space
+# Kollection Gallery
 
-A static collection-board demo that runs with local browser storage first and can later persist to Supabase. It is ready to deploy on Vercel as a plain static site.
+A static image gallery that is no longer tied to X at runtime. It can render from:
 
-## Files
+- `gallery-data.js` for local/static entries.
+- Supabase `photos` table for cached database records.
+- Local image files in `photos/`.
 
-- `index.html` contains the page structure and script loading.
-- `styles.css` contains the responsive interface.
-- `app.js` contains local storage behavior and optional Supabase persistence.
-- `supabase-config.js` is where Supabase project credentials can be added.
-- `vercel.json` keeps Vercel's static routing predictable.
+## Check locally
 
-## Supabase table
-
-Create a table named `items` with these columns:
-
-```sql
-create table public.items (
-  id uuid primary key default gen_random_uuid(),
-  title text not null,
-  category text not null default 'Research',
-  stage text not null default 'New',
-  created_at timestamptz not null default now()
-);
-
-alter table public.items enable row level security;
-
-create policy "Allow public demo reads"
-on public.items for select
-using (true);
-
-create policy "Allow public demo inserts"
-on public.items for insert
-with check (true);
-
-create policy "Allow public demo deletes"
-on public.items for delete
-using (true);
+```bash
+python3 -m http.server 4173
 ```
 
-The public policies are only suitable for a demo. For a real product, add authentication and user-scoped policies before sharing the app broadly.
+Then open:
 
-## Deploy
+```text
+http://localhost:4173/
+```
 
-1. Push this folder to a Git repository.
-2. Import the repository in Vercel.
-3. Keep the project as a static site with no build command.
-4. Add your Supabase URL and anon key in `supabase-config.js`.
+## Add local photos
 
-Opening `index.html` directly in a browser also works for the local-storage demo.
+Place files in `photos/`, then reference them in `gallery-data.js`:
+
+```js
+window.KOLLECTION_GALLERY = [
+  {
+    dateCode: "260618",
+    text: "260618 HD",
+    caption: "Local photo",
+    postUrl: "",
+    images: ["photos/my-photo.jpg"]
+  }
+];
+```
+
+The page only renders entries with a valid `YYMMDD` date code, `HD` in the text, and at least one image.
+
+## Cache remote photos to Supabase
+
+Supabase should store metadata in the `photos` table and cached files in Storage.
+
+1. In Supabase SQL Editor, run `database/schema.sql`.
+2. Create a public Storage bucket named `kollection-photos`.
+3. Add remote X image URLs to `gallery-data.js`.
+4. Install dependencies:
+
+```bash
+npm install
+```
+
+5. Copy `.env.example` to `.env` and fill in `SUPABASE_URL` plus `SUPABASE_SERVICE_ROLE_KEY`.
+6. Run:
+
+```bash
+export $(grep -v '^#' .env | xargs)
+npm run cache:photos
+```
+
+The script downloads each remote image, uploads it to Supabase Storage, and upserts one row per photo into `photos`.
+
+## Use Supabase in the browser
+
+Put your public Supabase URL and anon key in `supabase-config.js`:
+
+```js
+window.KOLLECTION_SUPABASE = {
+  url: "https://YOUR_PROJECT.supabase.co",
+  anonKey: "YOUR_SUPABASE_ANON_KEY"
+};
+```
+
+When configured, the gallery reads from Supabase. If Supabase is not configured or fails, it falls back to `gallery-data.js`.
+
+## Deploy on Vercel
+
+1. Push this folder to GitHub.
+2. In Vercel, import the GitHub repository.
+3. Use `Other` as the framework preset.
+4. Leave build command, install command, and output directory empty.
+5. Deploy.

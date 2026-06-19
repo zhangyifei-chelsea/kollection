@@ -1,142 +1,264 @@
-const starterItems = [
-  {
-    id: "seed-1",
-    title: "Launch moodboard references",
-    category: "Design",
-    stage: "Reviewing",
-    created_at: new Date().toISOString()
-  },
-  {
-    id: "seed-2",
-    title: "Supabase schema checklist",
-    category: "Product",
-    stage: "Saved",
-    created_at: new Date().toISOString()
-  },
-  {
-    id: "seed-3",
-    title: "Customer discovery notes",
-    category: "Research",
-    stage: "New",
-    created_at: new Date().toISOString()
-  }
-];
-
-const storageKey = "kollection-space-items";
-const config = window.KOLLECTION_SUPABASE || {};
-const canUseSupabase = Boolean(
-  config.url &&
-    config.anonKey &&
-    window.supabase &&
-    !config.url.includes("YOUR_") &&
-    !config.anonKey.includes("YOUR_")
-);
-
+const supabaseConfig = window.KOLLECTION_SUPABASE || {};
 const state = {
-  items: [],
   search: "",
-  stage: "All",
-  client: null,
-  remote: false
+  year: "all",
+  order: "asc",
+  photos: []
 };
 
-const itemForm = document.querySelector("#itemForm");
-const titleInput = document.querySelector("#titleInput");
-const categoryInput = document.querySelector("#categoryInput");
-const stageInput = document.querySelector("#stageInput");
 const searchInput = document.querySelector("#searchInput");
-const itemGrid = document.querySelector("#itemGrid");
-const itemCount = document.querySelector("#itemCount");
+const yearFilter = document.querySelector("#yearFilter");
+const orderFilter = document.querySelector("#orderFilter");
+const resultCount = document.querySelector("#resultCount");
+const sourceStatus = document.querySelector("#sourceStatus");
+const galleryGrid = document.querySelector("#galleryGrid");
 const emptyState = document.querySelector("#emptyState");
-const syncStatus = document.querySelector("#syncStatus");
-const filterButtons = [...document.querySelectorAll("[data-stage-filter]")];
+const heroPreview = document.querySelector("#heroPreview");
+const lightbox = document.querySelector("#lightbox");
+const lightboxImage = document.querySelector("#lightboxImage");
+const lightboxTitle = document.querySelector("#lightboxTitle");
+const lightboxText = document.querySelector("#lightboxText");
+const lightboxPost = document.querySelector("#lightboxPost");
+const closeLightbox = document.querySelector("#closeLightbox");
 
-function readLocalItems() {
-  try {
-    const saved = JSON.parse(localStorage.getItem(storageKey));
-    return Array.isArray(saved) && saved.length ? saved : starterItems;
-  } catch {
-    return starterItems;
-  }
+function hasSupabaseConfig() {
+  return Boolean(
+    supabaseConfig.url &&
+      supabaseConfig.anonKey &&
+      !supabaseConfig.url.includes("YOUR_") &&
+      !supabaseConfig.anonKey.includes("YOUR_")
+  );
 }
 
-function writeLocalItems() {
-  localStorage.setItem(storageKey, JSON.stringify(state.items));
+async function loadSupabaseClient() {
+  if (window.supabase) return window.supabase;
+
+  await new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.append(script);
+  });
+
+  return window.supabase;
 }
 
-async function loadItems() {
-  if (canUseSupabase) {
-    state.client = window.supabase.createClient(config.url, config.anonKey);
-    const { data, error } = await state.client
-      .from("items")
-      .select("id,title,category,stage,created_at")
-      .order("created_at", { ascending: false });
+async function loadPhotos() {
+  if (hasSupabaseConfig()) {
+    try {
+      const supabase = await loadSupabaseClient();
+      const client = supabase.createClient(supabaseConfig.url, supabaseConfig.anonKey);
+      const { data, error } = await client
+        .from("photos")
+        .select(
+          "id,date_code,photo_date,post_text,caption,post_url,original_url,cached_url,local_path,sort_index"
+        )
+        .order("photo_date", { ascending: true })
+        .order("sort_index", { ascending: true });
 
-    if (!error) {
-      state.items = data;
-      state.remote = true;
-      syncStatus.textContent = "Supabase connected";
-      syncStatus.classList.add("online");
-      renderItems();
+      if (error) throw error;
+
+      state.photos = data.map(normalizeDatabasePhoto).filter(Boolean);
+      sourceStatus.textContent = "Supabase source";
+      initialize();
       return;
+    } catch (error) {
+      sourceStatus.textContent = "Static fallback";
+      console.warn("Supabase gallery load failed", error);
     }
-
-    syncStatus.textContent = "Local mode";
   }
 
-  state.items = readLocalItems();
-  renderItems();
+  state.photos = normalizePostEntries(await loadStaticGalleryData());
+  sourceStatus.textContent = "Static source";
+  initialize();
 }
 
-function getVisibleItems() {
+async function loadStaticGalleryData() {
+  const response = await fetch(`gallery-data-expanded.js?v=${Date.now()}`, {
+    cache: "no-store"
+  });
+  const text = await response.text();
+  const match = text.match(/window\.KOLLECTION_GALLERY\s*=\s*([\s\S]*);\s*$/);
+  if (!match) return [];
+
+  try {
+    return JSON.parse(match[1]);
+  } catch {
+    return [];
+  }
+}
+
+function normalizePostEntries(items) {
+  return items.filter(isHdDatedPost).flatMap((item) =>
+    item.images.map((image, index) => ({
+      id: `${item.dateCode}-${index + 1}`,
+      dateCode: item.dateCode,
+      isoDate: toIsoDate(item.dateCode),
+      text: item.text,
+      caption: item.caption || `Photo ${index + 1}`,
+      postUrl: item.postUrl || "https://x.com/Kollection__",
+      image,
+      imageIndex: index + 1
+    }))
+  );
+}
+
+function normalizeDatabasePhoto(item) {
+  const dateCode = item.date_code;
+  const image = item.cached_url || item.local_path || item.original_url;
+
+  if (!/^\d{6}$/.test(dateCode || "") || !image) return null;
+
+  return {
+    id: item.id,
+    dateCode,
+    isoDate: item.photo_date || toIsoDate(dateCode),
+    text: item.post_text || "",
+    caption: item.caption || "Kollection__ photo",
+    postUrl: item.post_url || "https://x.com/Kollection__",
+    image,
+    imageIndex: item.sort_index || 1
+  };
+}
+
+function isHdDatedPost(item) {
+  return (
+    item &&
+    /^\d{6}$/.test(item.dateCode || "") &&
+    /\bHD\d*\b/i.test(item.text || "") &&
+    Array.isArray(item.images) &&
+    item.images.length > 0
+  );
+}
+
+function toIsoDate(dateCode) {
+  const year = Number(`20${dateCode.slice(0, 2)}`);
+  const month = dateCode.slice(2, 4);
+  const day = dateCode.slice(4, 6);
+  return `${year}-${month}-${day}`;
+}
+
+function formatDate(isoDate) {
+  return new Intl.DateTimeFormat("en", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  }).format(new Date(`${isoDate}T00:00:00`));
+}
+
+function initialize() {
+  populateYears();
+  renderHeroPreview();
+  renderGallery();
+}
+
+function populateYears() {
+  const selectedYear = yearFilter.value;
+  yearFilter.innerHTML = '<option value="all">All years</option>';
+  const years = [...new Set(state.photos.map((photo) => photo.isoDate.slice(0, 4)))].sort();
+
+  years.forEach((year) => {
+    const option = document.createElement("option");
+    option.value = year;
+    option.textContent = year;
+    yearFilter.append(option);
+  });
+
+  yearFilter.value = years.includes(selectedYear) ? selectedYear : "all";
+}
+
+function getVisiblePhotos() {
   const query = state.search.trim().toLowerCase();
 
-  return state.items.filter((item) => {
-    const matchesStage = state.stage === "All" || item.stage === state.stage;
-    const matchesSearch =
-      !query ||
-      item.title.toLowerCase().includes(query) ||
-      item.category.toLowerCase().includes(query);
+  return state.photos
+    .filter((photo) => {
+      const matchesYear = state.year === "all" || photo.isoDate.startsWith(state.year);
+      const haystack = [
+        photo.dateCode,
+        photo.isoDate,
+        photo.text,
+        photo.caption,
+        photo.postUrl
+      ]
+        .join(" ")
+        .toLowerCase();
 
-    return matchesStage && matchesSearch;
+      return matchesYear && (!query || haystack.includes(query));
+    })
+    .sort((a, b) => {
+      const direction = state.order === "asc" ? 1 : -1;
+      return a.isoDate.localeCompare(b.isoDate) * direction || a.imageIndex - b.imageIndex;
+    });
+}
+
+function renderHeroPreview() {
+  heroPreview.innerHTML = "";
+  const previewPhotos = state.photos.slice(0, 4);
+
+  if (previewPhotos.length === 0) {
+    ["YYMMDD", "HD", "Cached", "Local"].forEach((label) => {
+      const tile = document.createElement("div");
+      tile.className = "preview-placeholder";
+      tile.textContent = label;
+      heroPreview.append(tile);
+    });
+    return;
+  }
+
+  previewPhotos.forEach((photo) => {
+    const tile = document.createElement("div");
+    tile.className = "preview-tile";
+    tile.innerHTML = `<img src="${escapeAttribute(photo.image)}" alt="">`;
+    heroPreview.append(tile);
   });
 }
 
-function renderItems() {
-  const visibleItems = getVisibleItems();
-  itemGrid.innerHTML = "";
-  itemCount.textContent = `${visibleItems.length} ${
-    visibleItems.length === 1 ? "item" : "items"
+function renderGallery() {
+  const visiblePhotos = getVisiblePhotos();
+  galleryGrid.innerHTML = "";
+  resultCount.textContent = `${visiblePhotos.length} ${
+    visiblePhotos.length === 1 ? "photo" : "photos"
   }`;
-  emptyState.classList.toggle("visible", visibleItems.length === 0);
+  emptyState.classList.toggle("visible", visiblePhotos.length === 0);
 
-  visibleItems.forEach((item) => {
+  visiblePhotos.forEach((photo) => {
     const card = document.createElement("article");
-    card.className = "item-card";
+    card.className = "photo-card";
     card.innerHTML = `
-      <header>
-        <h3>${escapeHtml(item.title)}</h3>
-        <span class="tag">${escapeHtml(item.stage)}</span>
-      </header>
-      <div class="meta-row">
-        <span>${escapeHtml(item.category)}</span>
-        <span>${formatDate(item.created_at)}</span>
-      </div>
-      <button type="button" data-delete-id="${item.id}">Remove</button>
+      <button type="button" data-photo-id="${escapeAttribute(photo.id)}" aria-label="Open ${escapeAttribute(photo.caption)}">
+        <img src="${escapeAttribute(photo.image)}" alt="${escapeAttribute(photo.caption)}" loading="lazy">
+        <div class="photo-meta">
+          <div class="badge-row">
+            <span class="badge">${escapeHtml(photo.dateCode)}</span>
+            <span class="badge hd">HD</span>
+          </div>
+          <h3>${escapeHtml(photo.caption || `Photo ${photo.imageIndex}`)}</h3>
+          <p>${escapeHtml(formatDate(photo.isoDate))}</p>
+        </div>
+      </button>
     `;
-    itemGrid.append(card);
+    galleryGrid.append(card);
   });
 }
 
-function formatDate(value) {
-  return new Intl.DateTimeFormat("en", {
-    month: "short",
-    day: "numeric"
-  }).format(new Date(value));
+function openPhoto(id) {
+  const photo = state.photos.find((item) => String(item.id) === String(id));
+  if (!photo) return;
+
+  lightboxImage.src = photo.image;
+  lightboxImage.alt = photo.caption || "";
+  lightboxTitle.textContent = `${formatDate(photo.isoDate)} / ${photo.dateCode}`;
+  lightboxText.textContent = photo.text || "";
+  lightboxPost.href = photo.postUrl || "https://x.com/Kollection__";
+
+  if (typeof lightbox.showModal === "function") {
+    lightbox.showModal();
+  }
 }
 
-function escapeHtml(value) {
-  return value.replace(/[&<>"']/g, (character) => {
+function escapeHtml(value = "") {
+  return String(value).replace(/[&<>"']/g, (character) => {
     const entities = {
       "&": "&amp;",
       "<": "&lt;",
@@ -148,72 +270,34 @@ function escapeHtml(value) {
   });
 }
 
-async function createItem(event) {
-  event.preventDefault();
-  const item = {
-    title: titleInput.value.trim(),
-    category: categoryInput.value,
-    stage: stageInput.value
-  };
-
-  if (!item.title) return;
-
-  if (state.remote) {
-    const { data, error } = await state.client
-      .from("items")
-      .insert(item)
-      .select()
-      .single();
-
-    if (!error) {
-      state.items.unshift(data);
-    }
-  } else {
-    state.items.unshift({
-      ...item,
-      id: crypto.randomUUID(),
-      created_at: new Date().toISOString()
-    });
-    writeLocalItems();
-  }
-
-  itemForm.reset();
-  titleInput.focus();
-  renderItems();
+function escapeAttribute(value = "") {
+  return escapeHtml(value).replace(/`/g, "&#096;");
 }
-
-async function deleteItem(id) {
-  if (state.remote) {
-    const { error } = await state.client.from("items").delete().eq("id", id);
-    if (error) return;
-  }
-
-  state.items = state.items.filter((item) => item.id !== id);
-  writeLocalItems();
-  renderItems();
-}
-
-itemForm.addEventListener("submit", createItem);
 
 searchInput.addEventListener("input", (event) => {
   state.search = event.target.value;
-  renderItems();
+  renderGallery();
 });
 
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    state.stage = button.dataset.stageFilter;
-    filterButtons.forEach((item) => item.classList.remove("active"));
-    button.classList.add("active");
-    renderItems();
-  });
+yearFilter.addEventListener("change", (event) => {
+  state.year = event.target.value;
+  renderGallery();
 });
 
-itemGrid.addEventListener("click", (event) => {
-  const deleteButton = event.target.closest("[data-delete-id]");
-  if (deleteButton) {
-    deleteItem(deleteButton.dataset.deleteId);
-  }
+orderFilter.addEventListener("change", (event) => {
+  state.order = event.target.value;
+  renderGallery();
 });
 
-loadItems();
+galleryGrid.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-photo-id]");
+  if (button) openPhoto(button.dataset.photoId);
+});
+
+closeLightbox.addEventListener("click", () => lightbox.close());
+
+lightbox.addEventListener("click", (event) => {
+  if (event.target === lightbox) lightbox.close();
+});
+
+loadPhotos();
