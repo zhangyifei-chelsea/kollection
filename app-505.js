@@ -23,7 +23,24 @@ const closeLightbox = document.querySelector("#closeLightbox");
 const pages = [...document.querySelectorAll("[data-page]")];
 const navLinks = [...document.querySelectorAll("[data-nav]")];
 const homePhotoCount = document.querySelector("#homePhotoCount");
-document.documentElement.dataset.appBuild = "no-gallery-hero-1781836259791";
+const designCanvasElement = document.querySelector("#designCanvas");
+const fabricStatus = document.querySelector("#fabricStatus");
+const designBgColor = document.querySelector("#designBgColor");
+const designSwatches = document.querySelector("#designSwatches");
+const exportDesignButton = document.querySelector("#exportDesignButton");
+const clearDesignButton = document.querySelector("#clearDesignButton");
+const deleteSelectedButton = document.querySelector("#deleteSelectedButton");
+const bringForwardButton = document.querySelector("#bringForwardButton");
+const sendBackButton = document.querySelector("#sendBackButton");
+const designAddButtons = [...document.querySelectorAll("[data-design-add]")];
+document.documentElement.dataset.appBuild = "design-demo-1781839490793";
+
+const designState = {
+  fabricCanvas: null,
+  initializing: false
+};
+
+const designPhoto = "photos/2026-06-18/260618-2067613846605615000-01.jpg";
 
 function hasSupabaseConfig() {
   return Boolean(
@@ -173,6 +190,10 @@ function renderPage() {
   navLinks.forEach((link) => {
     link.classList.toggle("active", link.dataset.nav === pageName);
   });
+
+  if (pageName === "design") {
+    initializeDesignStudio();
+  }
 }
 
 function updateHomeCount() {
@@ -303,6 +324,299 @@ function escapeHtml(value = "") {
 
 function escapeAttribute(value = "") {
   return escapeHtml(value).replace(/`/g, "&#096;");
+}
+
+function loadFabricScript() {
+  if (window.fabric) return Promise.resolve(window.fabric);
+
+  return new Promise((resolve, reject) => {
+    const existingScript = document.querySelector("[data-fabric-script]");
+    if (existingScript) {
+      existingScript.addEventListener("load", () => resolve(window.fabric), { once: true });
+      existingScript.addEventListener("error", reject, { once: true });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/fabric@5.3.0/dist/fabric.min.js";
+    script.dataset.fabricScript = "true";
+    script.onload = () => resolve(window.fabric);
+    script.onerror = reject;
+    document.head.append(script);
+  });
+}
+
+async function initializeDesignStudio() {
+  if (!designCanvasElement || designState.fabricCanvas || designState.initializing) return;
+
+  designState.initializing = true;
+  if (fabricStatus) fabricStatus.textContent = "Loading canvas...";
+
+  try {
+    const fabric = await loadFabricScript();
+    const canvas = new fabric.Canvas(designCanvasElement, {
+      backgroundColor: designBgColor?.value || "#f6f1e7",
+      preserveObjectStacking: true,
+      selectionColor: "rgba(111, 143, 122, 0.16)",
+      selectionBorderColor: "#6f8f7a",
+      selectionLineWidth: 2
+    });
+
+    designState.fabricCanvas = canvas;
+    seedDesignCanvas();
+    bindDesignControls();
+    resizeDesignCanvas();
+    window.addEventListener("resize", resizeDesignCanvas);
+    if (fabricStatus) fabricStatus.textContent = "Ready";
+  } catch (error) {
+    console.warn("Fabric.js failed to load", error);
+    if (fabricStatus) fabricStatus.textContent = "Canvas unavailable";
+  } finally {
+    designState.initializing = false;
+  }
+}
+
+function seedDesignCanvas() {
+  const canvas = designState.fabricCanvas;
+  if (!canvas || canvas.getObjects().length > 0) return;
+
+  addDesignFrame();
+  addDesignTitle();
+  addDesignDate();
+  addDesignBadge();
+  canvas.renderAll();
+}
+
+function bindDesignControls() {
+  if (designCanvasElement.dataset.designBound === "true") return;
+  designCanvasElement.dataset.designBound = "true";
+
+  designBgColor?.addEventListener("input", (event) => setDesignBackground(event.target.value));
+  designSwatches?.addEventListener("click", (event) => {
+    const swatch = event.target.closest("[data-color]");
+    if (!swatch) return;
+    const color = swatch.dataset.color;
+    if (designBgColor) designBgColor.value = color;
+    setDesignBackground(color);
+  });
+
+  designAddButtons.forEach((button) => {
+    button.addEventListener("click", () => addDesignComponent(button.dataset.designAdd));
+  });
+
+  bringForwardButton?.addEventListener("click", () => {
+    const object = designState.fabricCanvas?.getActiveObject();
+    if (object) {
+      designState.fabricCanvas.bringForward(object);
+      designState.fabricCanvas.renderAll();
+    }
+  });
+
+  sendBackButton?.addEventListener("click", () => {
+    const object = designState.fabricCanvas?.getActiveObject();
+    if (object) {
+      designState.fabricCanvas.sendBackwards(object);
+      designState.fabricCanvas.renderAll();
+    }
+  });
+
+  deleteSelectedButton?.addEventListener("click", deleteSelectedDesignObject);
+  clearDesignButton?.addEventListener("click", resetDesignCanvas);
+  exportDesignButton?.addEventListener("click", exportDesignPng);
+}
+
+function setDesignBackground(color) {
+  const canvas = designState.fabricCanvas;
+  if (!canvas) return;
+
+  canvas.setBackgroundColor(color, canvas.renderAll.bind(canvas));
+}
+
+function addDesignComponent(type) {
+  const actions = {
+    title: addDesignTitle,
+    date: addDesignDate,
+    frame: addDesignFrame,
+    badge: addDesignBadge,
+    photo: addDesignPhoto,
+    line: addDesignLine
+  };
+
+  actions[type]?.();
+}
+
+function addDesignTitle() {
+  const canvas = designState.fabricCanvas;
+  if (!canvas) return;
+
+  const title = new fabric.IText("Kollection Space", {
+    left: 72,
+    top: 92,
+    width: 520,
+    fill: "#141715",
+    fontFamily: "Inter, Arial, sans-serif",
+    fontSize: 58,
+    fontWeight: 900,
+    lineHeight: 0.98
+  });
+  canvas.add(title).setActiveObject(title);
+  canvas.renderAll();
+}
+
+function addDesignDate() {
+  const canvas = designState.fabricCanvas;
+  if (!canvas) return;
+
+  const date = new fabric.IText("2026 / 06 / 18", {
+    left: 76,
+    top: 178,
+    fill: "#b86c54",
+    fontFamily: "Inter, Arial, sans-serif",
+    fontSize: 24,
+    fontWeight: 800,
+    charSpacing: 40
+  });
+  canvas.add(date).setActiveObject(date);
+  canvas.renderAll();
+}
+
+function addDesignFrame() {
+  const canvas = designState.fabricCanvas;
+  if (!canvas) return;
+
+  const frame = new fabric.Rect({
+    left: 52,
+    top: 52,
+    width: 616,
+    height: 796,
+    fill: "rgba(255,255,255,0)",
+    stroke: "#141715",
+    strokeWidth: 3
+  });
+  canvas.add(frame).sendToBack(frame);
+  canvas.renderAll();
+}
+
+function addDesignBadge() {
+  const canvas = designState.fabricCanvas;
+  if (!canvas) return;
+
+  const badge = new fabric.Group(
+    [
+      new fabric.Circle({ radius: 56, fill: "#d5ad45", originX: "center", originY: "center" }),
+      new fabric.Text("HD", {
+        fill: "#141715",
+        fontFamily: "Inter, Arial, sans-serif",
+        fontSize: 30,
+        fontWeight: 900,
+        originX: "center",
+        originY: "center"
+      })
+    ],
+    { left: 524, top: 650 }
+  );
+  canvas.add(badge).setActiveObject(badge);
+  canvas.renderAll();
+}
+
+function addDesignLine() {
+  const canvas = designState.fabricCanvas;
+  if (!canvas) return;
+
+  const line = new fabric.Rect({
+    left: 76,
+    top: 242,
+    width: 420,
+    height: 7,
+    fill: "#6f8f7a",
+    rx: 4,
+    ry: 4
+  });
+  canvas.add(line).setActiveObject(line);
+  canvas.renderAll();
+}
+
+function addDesignPhoto() {
+  const canvas = designState.fabricCanvas;
+  if (!canvas) return;
+
+  fabric.Image.fromURL(designPhoto, (image) => {
+    const targetWidth = 360;
+    image.scaleToWidth(targetWidth);
+    image.set({
+      left: 180,
+      top: 300,
+      clipPath: new fabric.Rect({
+        width: targetWidth,
+        height: 460,
+        originX: "center",
+        originY: "center"
+      })
+    });
+    canvas.add(image).setActiveObject(image);
+    canvas.renderAll();
+  });
+}
+
+function deleteSelectedDesignObject() {
+  const canvas = designState.fabricCanvas;
+  const activeObject = canvas?.getActiveObject();
+  if (!canvas || !activeObject) return;
+
+  if (activeObject.type === "activeSelection") {
+    activeObject.getObjects().forEach((object) => canvas.remove(object));
+  } else {
+    canvas.remove(activeObject);
+  }
+  canvas.discardActiveObject();
+  canvas.renderAll();
+}
+
+function resetDesignCanvas() {
+  const canvas = designState.fabricCanvas;
+  if (!canvas) return;
+
+  canvas.clear();
+  canvas.setBackgroundColor(designBgColor?.value || "#f6f1e7", () => {
+    seedDesignCanvas();
+  });
+}
+
+function exportDesignPng() {
+  const canvas = designState.fabricCanvas;
+  if (!canvas) return;
+
+  const link = document.createElement("a");
+  link.download = "kollection-design.png";
+  link.href = canvas.toDataURL({
+    format: "png",
+    multiplier: 2,
+    enableRetinaScaling: true
+  });
+  link.click();
+}
+
+function resizeDesignCanvas() {
+  const canvas = designState.fabricCanvas;
+  const wrapper = document.querySelector(".canvas-wrap");
+  if (!canvas || !wrapper) return;
+
+  const baseWidth = 720;
+  const availableWidth = Math.min(wrapper.clientWidth - 28, baseWidth);
+  const zoom = Math.max(0.38, availableWidth / baseWidth);
+  canvas.setZoom(zoom);
+  canvas.setDimensions({
+    width: baseWidth,
+    height: 900
+  });
+  canvas.setDimensions(
+    {
+      width: `${Math.round(baseWidth * zoom)}px`,
+      height: `${Math.round(900 * zoom)}px`
+    },
+    { cssOnly: true }
+  );
+  canvas.renderAll();
 }
 
 searchInput.addEventListener("input", (event) => {
