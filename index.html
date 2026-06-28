@@ -62,39 +62,27 @@
 
       <section class="page detail-page" id="design" data-page="design">
         <div class="detail-heading design-heading">
-          <p class="eyebrow">Design</p>
           <h2>Design studio</h2>
-          <p>Download existing reference layouts, or make a quick custom visual in the canvas.</p>
+          <p>Download existing free slogan designs, or make a quick custom visual in the canvas.</p>
         </div>
 
         <section class="download-shelf" aria-label="Existing free design downloads">
           <div class="section-heading">
             <h3>Existing designs</h3>
-            <p>Demo downloadable references selected from the local photo cache.</p>
           </div>
           <div class="design-download-grid">
             <article class="download-card">
-              <img src="photos/2026-06-18/260618-2067613846605615000-01.jpg" alt="Sage editorial reference">
+              <img src="assets/designs/nana_ver.jpeg" alt="Heart Slogan NANA Version preview">
               <div>
-                <h4>Sage Editorial</h4>
-                <p>Poster-ready vertical image reference.</p>
-                <a download href="photos/2026-06-18/260618-2067613846605615000-01.jpg">Download</a>
+                <h4>Heart Slogan (NANA Version)</h4>
+                <a download href="assets/designs/heart-slogan-nana-version.zip">Download</a>
               </div>
             </article>
             <article class="download-card">
-              <img src="photos/2026-06-13/260613-2065744130207285500-01.jpg" alt="Warm archive reference">
+              <img src="assets/designs/fairy_ver.jpeg" alt="Heart Slogan Fairy Version preview">
               <div>
-                <h4>Warm Archive</h4>
-                <p>Soft color moodboard starter.</p>
-                <a download href="photos/2026-06-13/260613-2065744130207285500-01.jpg">Download</a>
-              </div>
-            </article>
-            <article class="download-card">
-              <img src="photos/2026-06-05/260605-2062885668586717400-01.jpg" alt="Clean cover reference">
-              <div>
-                <h4>Clean Cover</h4>
-                <p>Simple image-led layout reference.</p>
-                <a download href="photos/2026-06-05/260605-2062885668586717400-01.jpg">Download</a>
+                <h4>Heart Slogan (Fairy Version)</h4>
+                <a download href="assets/designs/heart-slogan-fairy-version.zip">Download</a>
               </div>
             </article>
           </div>
@@ -103,18 +91,12 @@
         <section class="studio-section" aria-label="Design on your own">
           <div class="section-heading">
             <h3>Design on your own</h3>
-            <p>Canvas demo powered by Fabric.js.</p>
+            <p>Powered by Fabric.js.</p>
           </div>
           <div class="studio-layout">
             <aside class="studio-controls" aria-label="Design controls">
               <div class="control-group">
                 <h4>Background</h4>
-                <div class="swatch-row" id="designSwatches">
-                  <button type="button" class="swatch" data-color="#f6f1e7" style="--swatch: #f6f1e7" aria-label="Paper"></button>
-                  <button type="button" class="swatch" data-color="#dfe9ee" style="--swatch: #dfe9ee" aria-label="Lake mist"></button>
-                  <button type="button" class="swatch" data-color="#f4dfd2" style="--swatch: #f4dfd2" aria-label="Clay blush"></button>
-                  <button type="button" class="swatch" data-color="#d7dfd3" style="--swatch: #d7dfd3" aria-label="Sage wash"></button>
-                </div>
                 <label>
                   <span>Custom color</span>
                   <input id="designBgColor" type="color" value="#f6f1e7">
@@ -123,13 +105,15 @@
 
               <div class="control-group">
                 <h4>Components</h4>
+                <label>
+                  <span>Main fig source</span>
+                  <select id="designPhotoSelect"></select>
+                </label>
                 <div class="button-grid">
-                  <button type="button" data-design-add="title">Title</button>
-                  <button type="button" data-design-add="date">Date</button>
                   <button type="button" data-design-add="frame">Frame</button>
                   <button type="button" data-design-add="badge">Badge</button>
-                  <button type="button" data-design-add="photo">Photo</button>
-                  <button type="button" data-design-add="line">Line</button>
+                  <button type="button" data-design-add="mainFig">Main Fig</button>
+                  <button type="button" data-design-add="border">Border</button>
                 </div>
               </div>
 
@@ -144,10 +128,9 @@
               </div>
 
               <button class="export-button" type="button" id="exportDesignButton">Export PNG</button>
-              <p class="fabric-status" id="fabricStatus">Loading canvas...</p>
             </aside>
             <div class="canvas-wrap">
-              <canvas id="designCanvas" width="720" height="900" aria-label="Design canvas"></canvas>
+              <canvas id="designCanvas" width="720" height="720" aria-label="Design canvas"></canvas>
             </div>
           </div>
         </section>
@@ -167,6 +150,6 @@
     </dialog>
 
     <script src="supabase-config.js?v=hd-numbered-archive-2"></script>
-    <script src="app-505.js?v=english-date-labels-1782669600000"></script>
+    <script src="app-505.js?v=design-studio-square-1782670500000"></script>
   </body>
 </html>

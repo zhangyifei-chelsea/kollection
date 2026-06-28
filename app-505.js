@@ -24,23 +24,21 @@ const pages = [...document.querySelectorAll("[data-page]")];
 const navLinks = [...document.querySelectorAll("[data-nav]")];
 const homePhotoCount = document.querySelector("#homePhotoCount");
 const designCanvasElement = document.querySelector("#designCanvas");
-const fabricStatus = document.querySelector("#fabricStatus");
 const designBgColor = document.querySelector("#designBgColor");
 const designSwatches = document.querySelector("#designSwatches");
+const designPhotoSelect = document.querySelector("#designPhotoSelect");
 const exportDesignButton = document.querySelector("#exportDesignButton");
 const clearDesignButton = document.querySelector("#clearDesignButton");
 const deleteSelectedButton = document.querySelector("#deleteSelectedButton");
 const bringForwardButton = document.querySelector("#bringForwardButton");
 const sendBackButton = document.querySelector("#sendBackButton");
 const designAddButtons = [...document.querySelectorAll("[data-design-add]")];
-document.documentElement.dataset.appBuild = "english-date-labels-1782669600000";
+document.documentElement.dataset.appBuild = "design-studio-square-1782670500000";
 
 const designState = {
   fabricCanvas: null,
   initializing: false
 };
-
-const designPhoto = "photos/2026-06-18/260618-2067613846605615000-01.jpg";
 
 function hasSupabaseConfig() {
   return Boolean(
@@ -229,6 +227,7 @@ function formatDateTime(isoDateTime) {
 function initialize() {
   updateHomeCount();
   populateYears();
+  populateDesignPhotoSelect();
   renderHeroPreview();
   renderGallery();
   renderPage();
@@ -273,6 +272,18 @@ function populateYears() {
   });
 
   yearFilter.value = years.includes(selectedYear) ? selectedYear : "all";
+}
+
+function populateDesignPhotoSelect() {
+  if (!designPhotoSelect) return;
+
+  designPhotoSelect.innerHTML = "";
+  state.photos.forEach((photo) => {
+    const option = document.createElement("option");
+    option.value = photo.image;
+    option.textContent = `${photo.dateCode} / ${photo.caption || `Photo ${photo.imageIndex}`}`;
+    designPhotoSelect.append(option);
+  });
 }
 
 function getVisiblePhotos() {
@@ -417,7 +428,6 @@ async function initializeDesignStudio() {
   if (!designCanvasElement || designState.fabricCanvas || designState.initializing) return;
 
   designState.initializing = true;
-  if (fabricStatus) fabricStatus.textContent = "Loading canvas...";
 
   try {
     const fabric = await loadFabricScript();
@@ -434,10 +444,8 @@ async function initializeDesignStudio() {
     bindDesignControls();
     resizeDesignCanvas();
     window.addEventListener("resize", resizeDesignCanvas);
-    if (fabricStatus) fabricStatus.textContent = "Ready";
   } catch (error) {
     console.warn("Fabric.js failed to load", error);
-    if (fabricStatus) fabricStatus.textContent = "Canvas unavailable";
   } finally {
     designState.initializing = false;
   }
@@ -447,10 +455,7 @@ function seedDesignCanvas() {
   const canvas = designState.fabricCanvas;
   if (!canvas || canvas.getObjects().length > 0) return;
 
-  addDesignFrame();
-  addDesignTitle();
-  addDesignDate();
-  addDesignBadge();
+  addDesignBorder();
   canvas.renderAll();
 }
 
@@ -501,50 +506,13 @@ function setDesignBackground(color) {
 
 function addDesignComponent(type) {
   const actions = {
-    title: addDesignTitle,
-    date: addDesignDate,
     frame: addDesignFrame,
     badge: addDesignBadge,
-    photo: addDesignPhoto,
-    line: addDesignLine
+    mainFig: addDesignMainFig,
+    border: addDesignBorder
   };
 
   actions[type]?.();
-}
-
-function addDesignTitle() {
-  const canvas = designState.fabricCanvas;
-  if (!canvas) return;
-
-  const title = new fabric.IText("Kollection Space", {
-    left: 72,
-    top: 92,
-    width: 520,
-    fill: "#141715",
-    fontFamily: "Inter, Arial, sans-serif",
-    fontSize: 58,
-    fontWeight: 900,
-    lineHeight: 0.98
-  });
-  canvas.add(title).setActiveObject(title);
-  canvas.renderAll();
-}
-
-function addDesignDate() {
-  const canvas = designState.fabricCanvas;
-  if (!canvas) return;
-
-  const date = new fabric.IText("2026 / 06 / 18", {
-    left: 76,
-    top: 178,
-    fill: "#b86c54",
-    fontFamily: "Inter, Arial, sans-serif",
-    fontSize: 24,
-    fontWeight: 800,
-    charSpacing: 40
-  });
-  canvas.add(date).setActiveObject(date);
-  canvas.renderAll();
 }
 
 function addDesignFrame() {
@@ -555,7 +523,7 @@ function addDesignFrame() {
     left: 52,
     top: 52,
     width: 616,
-    height: 796,
+    height: 616,
     fill: "rgba(255,255,255,0)",
     stroke: "#141715",
     strokeWidth: 3
@@ -586,36 +554,55 @@ function addDesignBadge() {
   canvas.renderAll();
 }
 
-function addDesignLine() {
+function addDesignBorder() {
   const canvas = designState.fabricCanvas;
   if (!canvas) return;
 
-  const line = new fabric.Rect({
-    left: 76,
-    top: 242,
-    width: 420,
-    height: 7,
-    fill: "#6f8f7a",
-    rx: 4,
-    ry: 4
-  });
-  canvas.add(line).setActiveObject(line);
+  const existingBorder = canvas.getObjects().find((object) => object.designRole === "border");
+  if (existingBorder) {
+    canvas.remove(existingBorder);
+    canvas.discardActiveObject();
+    canvas.renderAll();
+    return;
+  }
+
+  const heart = new fabric.Path(
+    "M 280 560 C 130 440 0 330 0 170 C 0 70 80 0 180 0 C 230 0 260 25 280 65 C 300 25 330 0 380 0 C 480 0 560 70 560 170 C 560 330 430 440 280 560 Z",
+    {
+      left: 80,
+      top: 80,
+      designRole: "border",
+      fill: "rgba(255,255,255,0)",
+      stroke: "#ffffff",
+      strokeWidth: 5,
+      strokeLineCap: "round",
+      strokeLineJoin: "round"
+    }
+  );
+  canvas.add(heart).setActiveObject(heart);
   canvas.renderAll();
 }
 
-function addDesignPhoto() {
-  const canvas = designState.fabricCanvas;
-  if (!canvas) return;
+function getSelectedDesignPhoto() {
+  return designPhotoSelect?.value || state.photos[0]?.image || "";
+}
 
-  fabric.Image.fromURL(designPhoto, (image) => {
-    const targetWidth = 360;
-    image.scaleToWidth(targetWidth);
+function addDesignMainFig() {
+  const canvas = designState.fabricCanvas;
+  const selectedPhoto = getSelectedDesignPhoto();
+  if (!canvas || !selectedPhoto) return;
+
+  fabric.Image.fromURL(selectedPhoto, (image) => {
+    const targetSize = 430;
+    const scale = Math.max(targetSize / image.width, targetSize / image.height);
     image.set({
-      left: 180,
-      top: 300,
+      left: 145,
+      top: 145,
+      scaleX: scale,
+      scaleY: scale,
       clipPath: new fabric.Rect({
-        width: targetWidth,
-        height: 460,
+        width: targetSize,
+        height: targetSize,
         originX: "center",
         originY: "center"
       })
@@ -669,17 +656,18 @@ function resizeDesignCanvas() {
   if (!canvas || !wrapper) return;
 
   const baseWidth = 720;
+  const baseHeight = 720;
   const availableWidth = Math.min(wrapper.clientWidth - 28, baseWidth);
   const zoom = Math.max(0.38, availableWidth / baseWidth);
   canvas.setZoom(zoom);
   canvas.setDimensions({
     width: baseWidth,
-    height: 900
+    height: baseHeight
   });
   canvas.setDimensions(
     {
       width: `${Math.round(baseWidth * zoom)}px`,
-      height: `${Math.round(900 * zoom)}px`
+      height: `${Math.round(baseHeight * zoom)}px`
     },
     { cssOnly: true }
   );

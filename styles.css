@@ -382,17 +382,17 @@ select:focus {
 }
 
 .gallery-grid {
-  column-count: 3;
-  column-gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .photo-card {
-  display: inline-block;
+  display: block;
   width: 100%;
-  margin: 0 0 14px;
+  margin: 0;
   border: 1px solid var(--line);
   background: var(--panel);
-  break-inside: avoid;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.36);
 }
 
@@ -544,13 +544,13 @@ select:focus {
 
 .design-download-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
 .download-card {
   display: grid;
-  grid-template-rows: 260px auto;
+  grid-template-rows: auto auto;
   overflow: hidden;
   border: 1px solid var(--line);
   background: #050505;
@@ -559,9 +559,9 @@ select:focus {
 
 .download-card img {
   width: 100%;
-  height: 100%;
+  height: auto;
   background: #111111;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .download-card div {
@@ -789,7 +789,7 @@ code {
   }
 
   .gallery-grid {
-    column-count: 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -823,6 +823,6 @@ code {
   }
 
   .gallery-grid {
-    column-count: 1;
+    grid-template-columns: 1fr;
   }
 }
