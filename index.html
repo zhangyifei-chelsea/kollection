@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kollection Space</title>
+    <title>Kollection.space</title>
     <meta
       name="description"
-      content="A static Kollection Space hub with gallery, birthday, and design sections."
+      content="A static Kollection.space hub with gallery and design sections."
     >
     <link
       rel="icon"
@@ -16,55 +16,18 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand-link" href="#home" aria-label="Kollection Space home">
-        <p class="eyebrow">Personal archive</p>
-        <h1>Kollection Space</h1>
-      </a>
       <nav class="site-nav" aria-label="Sections">
         <a href="#gallery" data-nav="gallery">Gallery</a>
-        <a href="#birthday" data-nav="birthday">Birthday</a>
         <a href="#design" data-nav="design">Design</a>
       </nav>
+      <a class="brand-link" href="#gallery" aria-label="Kollection.space gallery">
+        <span class="brand-copy">
+          <span class="brand-title">Kollection.space</span>
+        </span>
+      </a>
     </header>
 
     <main>
-      <section class="page home-page" id="home" data-page="home">
-        <section class="home-hero" aria-label="Kollection overview">
-          <div>
-            <p class="eyebrow">Choose a room</p>
-            <h2>One space for photos, moments, and visual ideas.</h2>
-          </div>
-          <div class="home-summary">
-            <span id="homePhotoCount">505 photos cached</span>
-            <span>Static deploy ready</span>
-          </div>
-        </section>
-
-        <section class="category-grid" aria-label="Category pages">
-          <a class="category-card gallery-card" href="#gallery">
-            <span class="category-index">01</span>
-            <div>
-              <h2>Gallery</h2>
-              <p>Chronological HD archive with search, year filtering, and lightbox viewing.</p>
-            </div>
-          </a>
-          <a class="category-card birthday-card" href="#birthday">
-            <span class="category-index">02</span>
-            <div>
-              <h2>Birthday</h2>
-              <p>A dedicated place for birthday visuals, messages, and annual collections.</p>
-            </div>
-          </a>
-          <a class="category-card design-card" href="#design">
-            <span class="category-index">03</span>
-            <div>
-              <h2>Design</h2>
-              <p>Layouts, palettes, references, and future artwork experiments.</p>
-            </div>
-          </a>
-        </section>
-      </section>
-
       <section class="page" id="gallery" data-page="gallery">
         <section class="toolbar" aria-label="Gallery controls">
           <label>
@@ -80,8 +43,8 @@
           <label>
             <span>Order</span>
             <select id="orderFilter">
-              <option value="asc">Oldest first</option>
-              <option value="desc">Newest first</option>
+              <option value="asc">Oldest shot first</option>
+              <option value="desc">Newest shot first</option>
             </select>
           </label>
           <p class="result-count" id="resultCount">0 photos</p>
@@ -95,26 +58,6 @@
             <p>Add local files in <code>photos/</code>, or refresh the cached gallery data.</p>
           </div>
         </section>
-      </section>
-
-      <section class="page detail-page" id="birthday" data-page="birthday">
-        <div class="detail-heading">
-          <p class="eyebrow">Birthday</p>
-          <h2>Birthday archive</h2>
-          <p>Collect annual birthday images, notes, and themed sets here.</p>
-        </div>
-        <div class="detail-board">
-          <div class="detail-row">
-            <span>2026</span>
-            <strong>Birthday board</strong>
-            <p>Ready for saved photos, message drafts, and visual directions.</p>
-          </div>
-          <div class="detail-row">
-            <span>Assets</span>
-            <strong>Local-first</strong>
-            <p>Images can live in <code>photos/</code> or a future dedicated folder.</p>
-          </div>
-        </div>
       </section>
 
       <section class="page detail-page" id="design" data-page="design">
@@ -224,6 +167,6 @@
     </dialog>
 
     <script src="supabase-config.js?v=hd-numbered-archive-2"></script>
-    <script src="app-505.js?v=design-demo-1781839490793"></script>
+    <script src="app-505.js?v=english-date-labels-1782669600000"></script>
   </body>
 </html>

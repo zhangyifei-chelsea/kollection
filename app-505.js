@@ -33,7 +33,7 @@ const deleteSelectedButton = document.querySelector("#deleteSelectedButton");
 const bringForwardButton = document.querySelector("#bringForwardButton");
 const sendBackButton = document.querySelector("#sendBackButton");
 const designAddButtons = [...document.querySelectorAll("[data-design-add]")];
-document.documentElement.dataset.appBuild = "design-demo-1781839490793";
+document.documentElement.dataset.appBuild = "english-date-labels-1782669600000";
 
 const designState = {
   fabricCanvas: null,
@@ -112,30 +112,42 @@ async function loadStaticGalleryData() {
 }
 
 function normalizePostEntries(items) {
-  return items.filter(isHdDatedPost).flatMap((item) =>
-    item.images.map((image, index) => ({
-      id: `${item.dateCode}-${index + 1}`,
-      dateCode: item.dateCode,
-      isoDate: toIsoDate(item.dateCode),
+  return items.filter(isHdDatedPost).flatMap((item) => {
+    const capturedDateCode = extractCapturedDateCode(item);
+    const publishedAt = getPublishedAtFromPostUrl(item.postUrl);
+
+    return item.images.map((image, index) => ({
+      id: `${capturedDateCode}-${getPostId(item.postUrl) || "post"}-${index + 1}`,
+      dateCode: capturedDateCode,
+      capturedDateCode,
+      capturedDate: toIsoDate(capturedDateCode),
+      publishedAt,
       text: item.text,
       caption: item.caption || `Photo ${index + 1}`,
       postUrl: item.postUrl || "https://x.com/Kollection__",
       image,
       imageIndex: index + 1
-    }))
-  );
+    }));
+  });
 }
 
 function normalizeDatabasePhoto(item) {
-  const dateCode = item.date_code;
+  const dateCode = extractCapturedDateCode({
+    caption: item.caption,
+    text: item.post_text,
+    dateCode: item.date_code
+  });
   const image = item.cached_url || item.local_path || item.original_url;
+  const publishedAt = getPublishedAtFromPostUrl(item.post_url);
 
   if (!/^\d{6}$/.test(dateCode || "") || !image) return null;
 
   return {
     id: item.id,
     dateCode,
-    isoDate: item.photo_date || toIsoDate(dateCode),
+    capturedDateCode: dateCode,
+    capturedDate: toIsoDate(dateCode),
+    publishedAt,
     text: item.post_text || "",
     caption: item.caption || "Kollection__ photo",
     postUrl: item.post_url || "https://x.com/Kollection__",
@@ -147,11 +159,24 @@ function normalizeDatabasePhoto(item) {
 function isHdDatedPost(item) {
   return (
     item &&
-    /^\d{6}$/.test(item.dateCode || "") &&
+    /^\d{6}$/.test(extractCapturedDateCode(item) || "") &&
     /\bHD\d*\b/i.test(item.text || "") &&
     Array.isArray(item.images) &&
     item.images.length > 0
   );
+}
+
+function extractCapturedDateCode(item = {}) {
+  const candidates = [item.caption, item.text, item.dateCode, item.date_code]
+    .filter(Boolean)
+    .map(String);
+
+  for (const value of candidates) {
+    const match = value.match(/(?:^|\D)(\d{6})(?=\D|$)/);
+    if (match) return match[1];
+  }
+
+  return "";
 }
 
 function toIsoDate(dateCode) {
@@ -161,12 +186,44 @@ function toIsoDate(dateCode) {
   return `${year}-${month}-${day}`;
 }
 
+function getPostId(postUrl = "") {
+  const match = String(postUrl).match(/status\/(\d+)/);
+  return match ? match[1] : "";
+}
+
+function getPublishedAtFromPostUrl(postUrl = "") {
+  const postId = getPostId(postUrl);
+  if (!postId) return "";
+
+  try {
+    const twitterEpoch = 1288834974657n;
+    const timestamp = (BigInt(postId) >> 22n) + twitterEpoch;
+    return new Date(Number(timestamp)).toISOString();
+  } catch {
+    return "";
+  }
+}
+
 function formatDate(isoDate) {
+  if (!isoDate) return "Unknown";
+
   return new Intl.DateTimeFormat("en", {
     year: "numeric",
     month: "long",
     day: "numeric"
   }).format(new Date(`${isoDate}T00:00:00`));
+}
+
+function formatDateTime(isoDateTime) {
+  if (!isoDateTime) return "Unknown";
+
+  return new Intl.DateTimeFormat("en", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  }).format(new Date(isoDateTime));
 }
 
 function initialize() {
@@ -179,7 +236,7 @@ function initialize() {
 
 function currentPageName() {
   const pageName = window.location.hash.replace("#", "");
-  return pages.some((page) => page.dataset.page === pageName) ? pageName : "home";
+  return pages.some((page) => page.dataset.page === pageName) ? pageName : "gallery";
 }
 
 function renderPage() {
@@ -206,7 +263,7 @@ function updateHomeCount() {
 function populateYears() {
   const selectedYear = yearFilter.value;
   yearFilter.innerHTML = '<option value="all">All years</option>';
-  const years = [...new Set(state.photos.map((photo) => photo.isoDate.slice(0, 4)))].sort();
+  const years = [...new Set(state.photos.map((photo) => photo.capturedDate.slice(0, 4)))].sort();
 
   years.forEach((year) => {
     const option = document.createElement("option");
@@ -223,10 +280,11 @@ function getVisiblePhotos() {
 
   return state.photos
     .filter((photo) => {
-      const matchesYear = state.year === "all" || photo.isoDate.startsWith(state.year);
+      const matchesYear = state.year === "all" || photo.capturedDate.startsWith(state.year);
       const haystack = [
         photo.dateCode,
-        photo.isoDate,
+        photo.capturedDate,
+        photo.publishedAt,
         photo.text,
         photo.caption,
         photo.postUrl
@@ -238,7 +296,11 @@ function getVisiblePhotos() {
     })
     .sort((a, b) => {
       const direction = state.order === "asc" ? 1 : -1;
-      return a.isoDate.localeCompare(b.isoDate) * direction || a.imageIndex - b.imageIndex;
+      return (
+        a.capturedDate.localeCompare(b.capturedDate) * direction ||
+        a.publishedAt.localeCompare(b.publishedAt) ||
+        a.imageIndex - b.imageIndex
+      );
     });
 }
 
@@ -281,12 +343,17 @@ function renderGallery() {
       <button type="button" data-photo-id="${escapeAttribute(photo.id)}" aria-label="Open ${escapeAttribute(photo.caption)}">
         <img src="${escapeAttribute(photo.image)}" alt="${escapeAttribute(photo.caption)}" loading="lazy">
         <div class="photo-meta">
-          <div class="badge-row">
-            <span class="badge">${escapeHtml(photo.dateCode)}</span>
-            <span class="badge hd">HD</span>
-          </div>
           <h3>${escapeHtml(photo.caption || `Photo ${photo.imageIndex}`)}</h3>
-          <p>${escapeHtml(formatDate(photo.isoDate))}</p>
+          <dl class="photo-dates">
+            <div>
+              <dt>Capture Date</dt>
+              <dd>${escapeHtml(formatDate(photo.capturedDate))}</dd>
+            </div>
+            <div>
+              <dt>Publish Date</dt>
+              <dd>${escapeHtml(formatDateTime(photo.publishedAt))}</dd>
+            </div>
+          </dl>
         </div>
       </button>
     `;
@@ -300,8 +367,8 @@ function openPhoto(id) {
 
   lightboxImage.src = photo.image;
   lightboxImage.alt = photo.caption || "";
-  lightboxTitle.textContent = `${formatDate(photo.isoDate)} / ${photo.dateCode}`;
-  lightboxText.textContent = photo.text || "";
+  lightboxTitle.textContent = `${formatDate(photo.capturedDate)} / ${photo.dateCode}`;
+  lightboxText.textContent = `Capture Date: ${formatDate(photo.capturedDate)}\nPublish Date: ${formatDateTime(photo.publishedAt)}\n\n${photo.text || ""}`;
   lightboxPost.href = photo.postUrl || "https://x.com/Kollection__";
 
   if (typeof lightbox.showModal === "function") {
