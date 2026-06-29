@@ -30,6 +30,9 @@ const designPhotoSelect = document.querySelector("#designPhotoSelect");
 const designTextInput = document.querySelector("#designTextInput");
 const designTextColor = document.querySelector("#designTextColor");
 const designTextFont = document.querySelector("#designTextFont");
+const designTextOpacity = document.querySelector("#designTextOpacity");
+const designAccessorySelect = document.querySelector("#designAccessorySelect");
+const designAccessoryOpacity = document.querySelector("#designAccessoryOpacity");
 const exportDesignButton = document.querySelector("#exportDesignButton");
 const clearDesignButton = document.querySelector("#clearDesignButton");
 const deleteSelectedButton = document.querySelector("#deleteSelectedButton");
@@ -37,7 +40,7 @@ const bringForwardButton = document.querySelector("#bringForwardButton");
 const sendBackButton = document.querySelector("#sendBackButton");
 const showBorderToggle = document.querySelector("#showBorderToggle");
 const designAddButtons = [...document.querySelectorAll("[data-design-add]")];
-document.documentElement.dataset.appBuild = "design-border-toggle-1782674300000";
+document.documentElement.dataset.appBuild = "design-accessory-select-1782676800000";
 
 const designState = {
   fabricCanvas: null,
@@ -45,10 +48,10 @@ const designState = {
 };
 
 const designMainFigures = [
-  { label: "Fairy White", src: "assets/designs/main-fig-fairy.PNG" },
-  { label: "Apron White", src: "assets/designs/main-fig-apron.PNG" },
-  { label: "Denim Blue", src: "assets/designs/main-fig-denim.PNG" },
-  { label: "NANA Stripe", src: "assets/designs/main-fig-nana.PNG" }
+  { label: "Choice 1 (Fairy)", src: "assets/designs/main-fig-fairy.PNG" },
+  { label: "Choice 2 (Pastry)", src: "assets/designs/main-fig-apron.PNG" },
+  { label: "Choice 3", src: "assets/designs/main-fig-denim.PNG" },
+  { label: "Choice 4 (NANA)", src: "assets/designs/main-fig-nana.PNG" }
 ];
 
 const designTextFonts = {
@@ -86,6 +89,42 @@ const designTextFonts = {
   },
   "cute-branding": {
     family: '"Avenir Next", "Helvetica Neue", Arial, sans-serif',
+    weight: 900
+  },
+  hobeaux: {
+    family: 'Hobeaux, "Cooper Black", Georgia, serif',
+    weight: 900
+  },
+  "itc-souvenir": {
+    family: '"ITC Souvenir", Souvenir, Georgia, serif',
+    weight: 800
+  },
+  "cooper-black": {
+    family: '"Cooper Black", Cooper, Georgia, serif',
+    weight: 900
+  },
+  windsor: {
+    family: 'Windsor, Georgia, serif',
+    weight: 800
+  },
+  genty: {
+    family: 'Genty, "Cooper Black", Georgia, serif',
+    weight: 900
+  },
+  recoleta: {
+    family: 'Recoleta, Georgia, serif',
+    weight: 800
+  },
+  "tan-pearl": {
+    family: '"TAN Pearl", "Cooper Black", Georgia, serif',
+    weight: 900
+  },
+  gliker: {
+    family: 'Gliker, Georgia, serif',
+    weight: 900
+  },
+  pilowlava: {
+    family: 'Pilowlava, "Cooper Black", Georgia, serif',
     weight: 900
   }
 };
@@ -562,7 +601,8 @@ function setDesignBackground(color) {
 
 function addDesignComponent(type) {
   const actions = {
-    text: addDesignText
+    text: addDesignText,
+    accessory: addDesignAccessories
   };
 
   actions[type]?.();
@@ -582,10 +622,43 @@ function addDesignText() {
     fontFamily: font.family,
     fontSize: 44,
     fontWeight: font.weight,
-    lineHeight: 1.08
+    lineHeight: 1.08,
+    opacity: getRangeOpacity(designTextOpacity)
   });
   canvas.add(text).setActiveObject(text);
   canvas.renderAll();
+}
+
+function getRangeOpacity(input) {
+  const value = Number(input?.value || 100);
+  return Math.min(Math.max(value, 10), 100) / 100;
+}
+
+function addDesignAccessories() {
+  const canvas = designState.fabricCanvas;
+  const selectedAccessory = designAccessorySelect?.value;
+  if (!canvas || !selectedAccessory) return;
+
+  const opacity = getRangeOpacity(designAccessoryOpacity);
+  const accessoryCount = canvas.getObjects().filter((object) => object.designRole === "accessory").length;
+  fabric.Image.fromURL(selectedAccessory, (image) => {
+    const targetSize = 180;
+    const scale = Math.min(targetSize / image.width, targetSize / image.height);
+    const column = accessoryCount % 3;
+    const row = Math.floor(accessoryCount / 3) % 3;
+    image.set({
+      left: 88 + column * 178,
+      top: 84 + row * 178,
+      designRole: "accessory",
+      opacity,
+      scaleX: scale,
+      scaleY: scale
+    });
+    canvas.add(image).setActiveObject(image);
+    const border = getDesignBorder();
+    if (border) canvas.bringToFront(border);
+    canvas.renderAll();
+  });
 }
 
 function getDesignBorder() {
