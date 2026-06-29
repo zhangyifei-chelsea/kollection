@@ -53,8 +53,8 @@ main {
 
 .site-header {
   display: grid;
-  gap: 26px;
-  padding: 20px 0 28px;
+  gap: clamp(56px, 8vw, 104px);
+  padding: 20px 0 40px;
 }
 
 .brand-link,
@@ -178,6 +178,10 @@ p {
 
 .page.active {
   display: block;
+}
+
+.main-page {
+  min-height: 44vh;
 }
 
 .home-hero {
@@ -642,6 +646,33 @@ select:focus {
 
 .button-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.text-action-grid {
+  grid-template-columns: 1fr;
+}
+
+.toggle-row {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #000;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 900;
+  padding: 0 14px;
+  text-align: center;
+}
+
+.toggle-row.is-on {
+  border-color: var(--sun);
+  background: var(--sun);
+  color: #000;
 }
 
 .button-grid button:hover,

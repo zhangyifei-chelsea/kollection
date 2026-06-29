@@ -20,7 +20,7 @@
         <a href="#gallery" data-nav="gallery">Gallery</a>
         <a href="#design" data-nav="design">Design</a>
       </nav>
-      <a class="brand-link" href="#gallery" aria-label="Kollection.space gallery">
+      <a class="brand-link" href="#home" aria-label="Kollection.space home">
         <span class="brand-copy">
           <span class="brand-title">Kollection.space</span>
         </span>
@@ -28,6 +28,8 @@
     </header>
 
     <main>
+      <section class="page main-page" id="home" data-page="home" aria-label="Kollection.space home"></section>
+
       <section class="page" id="gallery" data-page="gallery">
         <section class="toolbar" aria-label="Gallery controls">
           <label>
@@ -109,16 +111,38 @@
                   <span>Main fig source</span>
                   <select id="designPhotoSelect"></select>
                 </label>
-                <div class="button-grid">
-                  <button type="button" data-design-add="frame">Frame</button>
-                  <button type="button" data-design-add="badge">Badge</button>
-                  <button type="button" data-design-add="mainFig">Main Fig</button>
-                  <button type="button" data-design-add="border">Border</button>
+                <label>
+                  <span>Text content</span>
+                  <input id="designTextInput" type="text" value="Your text">
+                </label>
+                <label>
+                  <span>Text color</span>
+                  <input id="designTextColor" type="color" value="#ffffff">
+                </label>
+                <label>
+                  <span>Text font</span>
+                  <select id="designTextFont">
+                    <option value="bubble-serif">Bubble Serif</option>
+                    <option value="playful-serif">Playful Serif</option>
+                    <option value="cute-display">Cute Display Font</option>
+                    <option value="soft-serif">Soft Serif</option>
+                    <option value="editorial-serif">Editorial Serif</option>
+                    <option value="retro-bubble">Retro Bubble Font</option>
+                    <option value="y2k-serif">Y2K Serif</option>
+                    <option value="korean-magazine">Korean Magazine Font</option>
+                    <option value="cute-branding">Cute Branding Font</option>
+                  </select>
+                </label>
+                <div class="button-grid text-action-grid">
+                  <button type="button" data-design-add="text">Add text</button>
                 </div>
               </div>
 
               <div class="control-group">
                 <h4>Selection</h4>
+                <button class="toggle-row is-on" id="showBorderToggle" type="button" aria-pressed="true">
+                  Show border
+                </button>
                 <div class="button-grid">
                   <button type="button" id="bringForwardButton">Forward</button>
                   <button type="button" id="sendBackButton">Back</button>
@@ -150,6 +174,6 @@
     </dialog>
 
     <script src="supabase-config.js?v=hd-numbered-archive-2"></script>
-    <script src="app-505.js?v=design-studio-square-1782670500000"></script>
+    <script src="app-505.js?v=design-border-toggle-1782674300000"></script>
   </body>
 </html>

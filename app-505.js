@@ -27,17 +27,67 @@ const designCanvasElement = document.querySelector("#designCanvas");
 const designBgColor = document.querySelector("#designBgColor");
 const designSwatches = document.querySelector("#designSwatches");
 const designPhotoSelect = document.querySelector("#designPhotoSelect");
+const designTextInput = document.querySelector("#designTextInput");
+const designTextColor = document.querySelector("#designTextColor");
+const designTextFont = document.querySelector("#designTextFont");
 const exportDesignButton = document.querySelector("#exportDesignButton");
 const clearDesignButton = document.querySelector("#clearDesignButton");
 const deleteSelectedButton = document.querySelector("#deleteSelectedButton");
 const bringForwardButton = document.querySelector("#bringForwardButton");
 const sendBackButton = document.querySelector("#sendBackButton");
+const showBorderToggle = document.querySelector("#showBorderToggle");
 const designAddButtons = [...document.querySelectorAll("[data-design-add]")];
-document.documentElement.dataset.appBuild = "design-studio-square-1782670500000";
+document.documentElement.dataset.appBuild = "design-border-toggle-1782674300000";
 
 const designState = {
   fabricCanvas: null,
   initializing: false
+};
+
+const designMainFigures = [
+  { label: "Fairy White", src: "assets/designs/main-fig-fairy.PNG" },
+  { label: "Apron White", src: "assets/designs/main-fig-apron.PNG" },
+  { label: "Denim Blue", src: "assets/designs/main-fig-denim.PNG" },
+  { label: "NANA Stripe", src: "assets/designs/main-fig-nana.PNG" }
+];
+
+const designTextFonts = {
+  "bubble-serif": {
+    family: 'Georgia, "Times New Roman", serif',
+    weight: 900
+  },
+  "playful-serif": {
+    family: 'Palatino, "Book Antiqua", Georgia, serif',
+    weight: 800
+  },
+  "cute-display": {
+    family: '"Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif',
+    weight: 900
+  },
+  "soft-serif": {
+    family: 'Garamond, Georgia, "Times New Roman", serif',
+    weight: 700
+  },
+  "editorial-serif": {
+    family: 'Didot, "Bodoni 72", Georgia, serif',
+    weight: 800
+  },
+  "retro-bubble": {
+    family: 'Cooper, "Cooper Black", Georgia, serif',
+    weight: 900
+  },
+  "y2k-serif": {
+    family: '"Bodoni 72", Didot, Georgia, serif',
+    weight: 900
+  },
+  "korean-magazine": {
+    family: '"Apple SD Gothic Neo", "Noto Serif KR", Georgia, serif',
+    weight: 800
+  },
+  "cute-branding": {
+    family: '"Avenir Next", "Helvetica Neue", Arial, sans-serif',
+    weight: 900
+  }
 };
 
 function hasSupabaseConfig() {
@@ -235,7 +285,7 @@ function initialize() {
 
 function currentPageName() {
   const pageName = window.location.hash.replace("#", "");
-  return pages.some((page) => page.dataset.page === pageName) ? pageName : "gallery";
+  return pages.some((page) => page.dataset.page === pageName) ? pageName : "home";
 }
 
 function renderPage() {
@@ -278,10 +328,10 @@ function populateDesignPhotoSelect() {
   if (!designPhotoSelect) return;
 
   designPhotoSelect.innerHTML = "";
-  state.photos.forEach((photo) => {
+  designMainFigures.forEach((figure) => {
     const option = document.createElement("option");
-    option.value = photo.image;
-    option.textContent = `${photo.dateCode} / ${photo.caption || `Photo ${photo.imageIndex}`}`;
+    option.value = figure.src;
+    option.textContent = figure.label;
     designPhotoSelect.append(option);
   });
 }
@@ -455,7 +505,8 @@ function seedDesignCanvas() {
   const canvas = designState.fabricCanvas;
   if (!canvas || canvas.getObjects().length > 0) return;
 
-  addDesignBorder();
+  addDesignMainFig();
+  setDesignBorderVisible(showBorderToggle?.getAttribute("aria-pressed") !== "false");
   canvas.renderAll();
 }
 
@@ -474,6 +525,11 @@ function bindDesignControls() {
 
   designAddButtons.forEach((button) => {
     button.addEventListener("click", () => addDesignComponent(button.dataset.designAdd));
+  });
+  designPhotoSelect?.addEventListener("change", () => addDesignMainFig());
+  showBorderToggle?.addEventListener("click", () => {
+    const nextState = showBorderToggle.getAttribute("aria-pressed") !== "true";
+    setDesignBorderVisible(nextState);
   });
 
   bringForwardButton?.addEventListener("click", () => {
@@ -506,81 +562,82 @@ function setDesignBackground(color) {
 
 function addDesignComponent(type) {
   const actions = {
-    frame: addDesignFrame,
-    badge: addDesignBadge,
-    mainFig: addDesignMainFig,
-    border: addDesignBorder
+    text: addDesignText
   };
 
   actions[type]?.();
 }
 
-function addDesignFrame() {
+function addDesignText() {
   const canvas = designState.fabricCanvas;
   if (!canvas) return;
 
-  const frame = new fabric.Rect({
-    left: 52,
-    top: 52,
-    width: 616,
-    height: 616,
-    fill: "rgba(255,255,255,0)",
-    stroke: "#141715",
-    strokeWidth: 3
+  const content = designTextInput?.value.trim() || "Your text";
+  const font = designTextFonts[designTextFont?.value] || designTextFonts["bubble-serif"];
+  const text = new fabric.IText(content, {
+    left: 96,
+    top: 96,
+    width: 520,
+    fill: designTextColor?.value || "#ffffff",
+    fontFamily: font.family,
+    fontSize: 44,
+    fontWeight: font.weight,
+    lineHeight: 1.08
   });
-  canvas.add(frame).sendToBack(frame);
+  canvas.add(text).setActiveObject(text);
   canvas.renderAll();
 }
 
-function addDesignBadge() {
-  const canvas = designState.fabricCanvas;
-  if (!canvas) return;
-
-  const badge = new fabric.Group(
-    [
-      new fabric.Circle({ radius: 56, fill: "#d5ad45", originX: "center", originY: "center" }),
-      new fabric.Text("HD", {
-        fill: "#141715",
-        fontFamily: "Inter, Arial, sans-serif",
-        fontSize: 30,
-        fontWeight: 900,
-        originX: "center",
-        originY: "center"
-      })
-    ],
-    { left: 524, top: 650 }
-  );
-  canvas.add(badge).setActiveObject(badge);
-  canvas.renderAll();
+function getDesignBorder() {
+  return designState.fabricCanvas?.getObjects().find((object) => object.designRole === "border");
 }
 
-function addDesignBorder() {
+function setDesignBorderVisible(isVisible) {
   const canvas = designState.fabricCanvas;
   if (!canvas) return;
 
-  const existingBorder = canvas.getObjects().find((object) => object.designRole === "border");
-  if (existingBorder) {
+  if (showBorderToggle) {
+    showBorderToggle.setAttribute("aria-pressed", String(isVisible));
+    showBorderToggle.classList.toggle("is-on", isVisible);
+  }
+
+  const existingBorder = getDesignBorder();
+  if (!isVisible && existingBorder) {
     canvas.remove(existingBorder);
     canvas.discardActiveObject();
     canvas.renderAll();
     return;
   }
+  if (!isVisible || existingBorder) return;
 
   const heart = new fabric.Path(
     "M 280 560 C 130 440 0 330 0 170 C 0 70 80 0 180 0 C 230 0 260 25 280 65 C 300 25 330 0 380 0 C 480 0 560 70 560 170 C 560 330 430 440 280 560 Z",
-    {
-      left: 80,
-      top: 80,
-      designRole: "border",
-      fill: "rgba(255,255,255,0)",
-      stroke: "#ffffff",
-      strokeWidth: 5,
-      strokeLineCap: "round",
-      strokeLineJoin: "round"
+        {
+          left: 80,
+          top: 80,
+          designRole: "border",
+          fill: "rgba(255,255,255,0)",
+          stroke: "#ffffff",
+          strokeWidth: 5,
+          strokeLineCap: "round",
+          strokeLineJoin: "round",
+          selectable: false,
+          evented: false,
+          lockMovementX: true,
+          lockMovementY: true,
+          lockScalingX: true,
+          lockScalingY: true,
+          lockRotation: true,
+          hasControls: false,
+          hasBorders: false
+        }
+      );
+      canvas.add(heart);
+      canvas.renderAll();
     }
-  );
-  canvas.add(heart).setActiveObject(heart);
-  canvas.renderAll();
+
+function addDesignBorder() {
+  setDesignBorderVisible(true);
 }
 
 function getSelectedDesignPhoto() {
@@ -592,22 +649,28 @@ function addDesignMainFig() {
   const selectedPhoto = getSelectedDesignPhoto();
   if (!canvas || !selectedPhoto) return;
 
+  canvas
+    .getObjects()
+    .filter((object) => object.designRole === "mainFig")
+    .forEach((object) => canvas.remove(object));
+
   fabric.Image.fromURL(selectedPhoto, (image) => {
-    const targetSize = 430;
-    const scale = Math.max(targetSize / image.width, targetSize / image.height);
+    const targetSize = 560;
+    const scale = Math.min(targetSize / image.width, targetSize / image.height);
+    const scaledWidth = image.width * scale;
+    const scaledHeight = image.height * scale;
     image.set({
-      left: 145,
-      top: 145,
+      left: 360 - scaledWidth / 2,
+      top: 360 - scaledHeight / 2,
+      designRole: "mainFig",
       scaleX: scale,
-      scaleY: scale,
-      clipPath: new fabric.Rect({
-        width: targetSize,
-        height: targetSize,
-        originX: "center",
-        originY: "center"
-      })
+      scaleY: scale
     });
-    canvas.add(image).setActiveObject(image);
+    canvas.add(image);
+    canvas.sendToBack(image);
+    const border = canvas.getObjects().find((object) => object.designRole === "border");
+    if (border) canvas.bringToFront(border);
+    canvas.setActiveObject(image);
     canvas.renderAll();
   });
 }
