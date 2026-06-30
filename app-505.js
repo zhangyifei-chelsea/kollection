@@ -42,7 +42,7 @@ const bringForwardButton = document.querySelector("#bringForwardButton");
 const sendBackButton = document.querySelector("#sendBackButton");
 const showBorderToggle = document.querySelector("#showBorderToggle");
 const designAddButtons = [...document.querySelectorAll("[data-design-add]")];
-document.documentElement.dataset.appBuild = "design-component-previews-1782679800000";
+document.documentElement.dataset.appBuild = "main-fig-choices-1782760200000";
 
 const designState = {
   fabricCanvas: null,
@@ -52,8 +52,8 @@ const designState = {
 const designMainFigures = [
   { label: "Choice 1 (Fairy)", src: "assets/designs/main-fig-fairy.PNG" },
   { label: "Choice 2 (Pastry)", src: "assets/designs/main-fig-apron.PNG" },
-  { label: "Choice 3", src: "assets/designs/main-fig-denim.PNG" },
-  { label: "Choice 4 (NANA)", src: "assets/designs/main-fig-nana.PNG" }
+  { label: "Choice 3", src: "assets/designs/main-fig-choice-3.PNG" },
+  { label: "Choice 4 (NANA)", src: "assets/designs/main-fig-choice-4.PNG" }
 ];
 
 const designTextFonts = {
