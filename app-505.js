@@ -31,8 +31,10 @@ const designTextInput = document.querySelector("#designTextInput");
 const designTextColor = document.querySelector("#designTextColor");
 const designTextFont = document.querySelector("#designTextFont");
 const designTextOpacity = document.querySelector("#designTextOpacity");
+const designTextPreview = document.querySelector("#designTextPreview");
 const designAccessorySelect = document.querySelector("#designAccessorySelect");
 const designAccessoryOpacity = document.querySelector("#designAccessoryOpacity");
+const designAccessoryPreview = document.querySelector("#designAccessoryPreview");
 const exportDesignButton = document.querySelector("#exportDesignButton");
 const clearDesignButton = document.querySelector("#clearDesignButton");
 const deleteSelectedButton = document.querySelector("#deleteSelectedButton");
@@ -40,7 +42,7 @@ const bringForwardButton = document.querySelector("#bringForwardButton");
 const sendBackButton = document.querySelector("#sendBackButton");
 const showBorderToggle = document.querySelector("#showBorderToggle");
 const designAddButtons = [...document.querySelectorAll("[data-design-add]")];
-document.documentElement.dataset.appBuild = "design-accessory-select-1782676800000";
+document.documentElement.dataset.appBuild = "design-component-previews-1782679800000";
 
 const designState = {
   fabricCanvas: null,
@@ -329,6 +331,7 @@ function currentPageName() {
 
 function renderPage() {
   const pageName = currentPageName();
+  document.body.dataset.page = pageName;
   pages.forEach((page) => {
     page.classList.toggle("active", page.dataset.page === pageName);
   });
@@ -565,6 +568,14 @@ function bindDesignControls() {
   designAddButtons.forEach((button) => {
     button.addEventListener("click", () => addDesignComponent(button.dataset.designAdd));
   });
+  [designTextInput, designTextColor, designTextFont, designTextOpacity].forEach((control) => {
+    control?.addEventListener("input", updateDesignPreviews);
+    control?.addEventListener("change", updateDesignPreviews);
+  });
+  [designAccessorySelect, designAccessoryOpacity].forEach((control) => {
+    control?.addEventListener("input", updateDesignPreviews);
+    control?.addEventListener("change", updateDesignPreviews);
+  });
   designPhotoSelect?.addEventListener("change", () => addDesignMainFig());
   showBorderToggle?.addEventListener("click", () => {
     const nextState = showBorderToggle.getAttribute("aria-pressed") !== "true";
@@ -590,6 +601,7 @@ function bindDesignControls() {
   deleteSelectedButton?.addEventListener("click", deleteSelectedDesignObject);
   clearDesignButton?.addEventListener("click", resetDesignCanvas);
   exportDesignButton?.addEventListener("click", exportDesignPng);
+  updateDesignPreviews();
 }
 
 function setDesignBackground(color) {
@@ -632,6 +644,22 @@ function addDesignText() {
 function getRangeOpacity(input) {
   const value = Number(input?.value || 100);
   return Math.min(Math.max(value, 10), 100) / 100;
+}
+
+function updateDesignPreviews() {
+  if (designTextPreview) {
+    const font = designTextFonts[designTextFont?.value] || designTextFonts["bubble-serif"];
+    designTextPreview.textContent = designTextInput?.value.trim() || "Your text";
+    designTextPreview.style.color = designTextColor?.value || "#ffffff";
+    designTextPreview.style.fontFamily = font.family;
+    designTextPreview.style.fontWeight = String(font.weight);
+    designTextPreview.style.opacity = String(getRangeOpacity(designTextOpacity));
+  }
+
+  if (designAccessoryPreview) {
+    designAccessoryPreview.src = designAccessorySelect?.value || "assets/designs/accessory-01.PNG";
+    designAccessoryPreview.style.opacity = String(getRangeOpacity(designAccessoryOpacity));
+  }
 }
 
 function addDesignAccessories() {

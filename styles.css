@@ -30,6 +30,23 @@ body {
     sans-serif;
 }
 
+body[data-page="home"] {
+  background: #000000;
+}
+
+body[data-page="home"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: url("assets/home-dark-photo-tile.jpg?v=irregular-1782679000000");
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 720px auto;
+  opacity: 0.24;
+  pointer-events: none;
+}
+
 button,
 input,
 select {
@@ -47,6 +64,8 @@ a {
 
 .site-header,
 main {
+  position: relative;
+  z-index: 1;
   width: min(1280px, calc(100% - 32px));
   margin-inline: auto;
 }
@@ -55,6 +74,19 @@ main {
   display: grid;
   gap: clamp(56px, 8vw, 104px);
   padding: 20px 0 40px;
+}
+
+body[data-page="home"] .site-header {
+  width: min(1280px, calc(100% - 32px));
+  min-height: 100svh;
+  grid-template-rows: auto 1fr;
+  gap: 0;
+  padding: 20px 0;
+}
+
+body[data-page="home"] .brand-link {
+  align-self: center;
+  transform: translateY(-27px);
 }
 
 .brand-link,
@@ -650,6 +682,42 @@ select:focus {
 
 .text-action-grid {
   grid-template-columns: 1fr;
+}
+
+.component-preview {
+  display: grid;
+  min-height: 104px;
+  place-items: center;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
+    #000000;
+  background-position: 0 0, 0 10px;
+  background-size: 20px 20px;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.text-preview-box span {
+  max-width: 100%;
+  color: #ffffff;
+  font-size: 1.45rem;
+  font-weight: 900;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.accessory-preview-box {
+  min-height: 138px;
+}
+
+.accessory-preview-box img {
+  display: block;
+  max-width: 92%;
+  max-height: 112px;
+  object-fit: contain;
 }
 
 .toggle-row {
