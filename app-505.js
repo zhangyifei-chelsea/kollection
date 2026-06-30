@@ -42,7 +42,7 @@ const bringForwardButton = document.querySelector("#bringForwardButton");
 const sendBackButton = document.querySelector("#sendBackButton");
 const showBorderToggle = document.querySelector("#showBorderToggle");
 const designAddButtons = [...document.querySelectorAll("[data-design-add]")];
-document.documentElement.dataset.appBuild = "accessory-expansion-1782761800000";
+document.documentElement.dataset.appBuild = "larger-heart-border-1782763200000";
 
 const designState = {
   fabricCanvas: null,
@@ -714,8 +714,8 @@ function setDesignBorderVisible(isVisible) {
   const heart = new fabric.Path(
     "M 280 560 C 130 440 0 330 0 170 C 0 70 80 0 180 0 C 230 0 260 25 280 65 C 300 25 330 0 380 0 C 480 0 560 70 560 170 C 560 330 430 440 280 560 Z",
         {
-          left: 80,
-          top: 80,
+          left: 30,
+          top: 30,
           designRole: "border",
           fill: "rgba(255,255,255,0)",
           stroke: "#ffffff",
@@ -730,7 +730,9 @@ function setDesignBorderVisible(isVisible) {
           lockScalingY: true,
           lockRotation: true,
           hasControls: false,
-          hasBorders: false
+          hasBorders: false,
+          scaleX: 1.18,
+          scaleY: 1.18
         }
       );
       canvas.add(heart);
