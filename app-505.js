@@ -42,7 +42,7 @@ const bringForwardButton = document.querySelector("#bringForwardButton");
 const sendBackButton = document.querySelector("#sendBackButton");
 const showBorderToggle = document.querySelector("#showBorderToggle");
 const designAddButtons = [...document.querySelectorAll("[data-design-add]")];
-document.documentElement.dataset.appBuild = "main-fig-choices-1782760200000";
+document.documentElement.dataset.appBuild = "accessory-expansion-1782761800000";
 
 const designState = {
   fabricCanvas: null,
