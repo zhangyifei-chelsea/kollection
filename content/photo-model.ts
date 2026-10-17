@@ -18,6 +18,8 @@ export type Photo = {
   event?: string;
   date?: string;
   credit?: string;
+  /** Confirmed capture location only; demonstration assignments live separately. */
+  locationId?: string;
   tags: string[];
   dominantColor: string;
 };

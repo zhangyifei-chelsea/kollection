@@ -2,35 +2,36 @@
 import { useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { Photo } from '@/content/photos';
-import { calendarDate, dateLabel, indexPhotoDates, validDate } from '@/lib/photo-calendar';
+import { CALENDAR_START, CALENDAR_END, clampCalendarDate, clampCalendarMonth, calendarDate, dateLabel, indexPhotoDates, validDate } from '@/lib/photo-calendar';
 import { ExploreGallery } from './ExploreGallery';
 
 const months = Array.from({length: 12}, (_, i) => new Intl.DateTimeFormat('en', {month: 'long', timeZone: 'UTC'}).format(new Date(Date.UTC(2000, i))));
 export function CalendarExplorer({ photos }: { photos: Photo[] }) {
   const params = useSearchParams();
-  const {dated, undated, dates} = indexPhotoDates(photos);
-  const fallback = dates.at(-1) ?? '2026-01-01';
+  const {dated, undated, dates: allDates} = indexPhotoDates(photos);
+  const dates = allDates.filter(date => date >= CALENDAR_START && date <= CALENDAR_END);
+  const fallback = dates.at(-1) ?? CALENDAR_START;
   const rawDate = params.get('date');
-  const selected = rawDate === 'unknown' ? 'unknown' : validDate(rawDate ?? undefined) ? rawDate! : fallback;
+  const selected = rawDate === 'unknown' ? 'unknown' : validDate(rawDate ?? undefined) ? clampCalendarDate(rawDate!) : fallback;
   const rawMonth = params.get('month');
-  const monthKey = rawMonth && validDate(`${rawMonth}-01`) ? rawMonth : (selected === 'unknown' ? fallback : selected).slice(0, 7);
+  const monthKey = clampCalendarMonth(rawMonth && validDate(`${rawMonth}-01`) ? rawMonth : (selected === 'unknown' ? fallback : selected).slice(0, 7));
   const [year, month] = monthKey.split('-').map(Number);
   const dayCount = new Date(Date.UTC(year, month, 0)).getUTCDate();
   const offset = (new Date(`${monthKey}-01T00:00:00Z`).getUTCDay() + 6) % 7;
   const results = selected === 'unknown' ? undated : dated.get(selected) ?? [];
-  const years = [...new Set([...dates.map(d => Number(d.slice(0, 4))), year])].sort((a,b) => a-b);
+  const years = [2025, 2026];
   const grid = useRef<HTMLDivElement>(null);
   function update(next: Record<string, string>) {
     const query = new URLSearchParams(params.toString());
-    Object.entries(next).forEach(([key, value]) => query.set(key, value));
+    Object.entries(next).forEach(([key, value]) => query.set(key, key === 'month' ? clampCalendarMonth(value) : value));
     window.history.pushState(null, '', `?${query}`);
   }
   function navigateMonth(delta: number) {
     const next = calendarDate(year, month - 1 + delta, 1).slice(0,7);
-    if (Number(next.slice(0,4)) >= 1000 && Number(next.slice(0,4)) <= 9999) update({month: next});
+    if (next >= CALENDAR_START.slice(0,7) && next <= CALENDAR_END.slice(0,7)) update({month: next});
   }
   function focusDate(date: string) {
-    if (Number(date.slice(0,4)) < 1000 || Number(date.slice(0,4)) > 9999) return;
+    date = clampCalendarDate(date);
     if (date.slice(0,7) !== monthKey) update({month: date.slice(0,7)});
     requestAnimationFrame(() => grid.current?.querySelector<HTMLButtonElement>(`[data-date="${date}"]`)?.focus());
   }
@@ -39,10 +40,13 @@ export function CalendarExplorer({ photos }: { photos: Photo[] }) {
       <section className="calendar" aria-labelledby="calendar-heading">
         <div className="calendar-top"><h2 id="calendar-heading">A moment in time</h2><span className="eyebrow">Calendar</span></div>
         <div className="calendar-navigation">
-          <button aria-label="Previous month" onClick={() => navigateMonth(-1)}>←</button>
-          <label><span className="sr-only">Month</span><select value={month-1} onChange={e => update({month: `${year}-${String(Number(e.target.value)+1).padStart(2,'0')}`})}>{months.map((name,i) => <option key={name} value={i}>{name}</option>)}</select></label>
-          <label><span className="sr-only">Year</span><select value={year} onChange={e => update({month: `${e.target.value}-${String(month).padStart(2,'0')}`})}>{years.map(y => <option key={y}>{y}</option>)}</select></label>
-          <button aria-label="Next month" onClick={() => navigateMonth(1)}>→</button>
+          <button disabled={monthKey === CALENDAR_START.slice(0,7)} aria-label="Previous month" onClick={() => navigateMonth(-1)}>←</button>
+          <label><span className="sr-only">Month</span><select aria-label="Month" value={month-1} onChange={e => update({month: `${year}-${String(Number(e.target.value)+1).padStart(2,'0')}`})}>{months.map((name,i) => {
+            const key = `${year}-${String(i+1).padStart(2,'0')}`;
+            return key >= CALENDAR_START.slice(0,7) && key <= CALENDAR_END.slice(0,7) ? <option key={name} value={i}>{name}</option> : null;
+          })}</select></label>
+          <label><span className="sr-only">Year</span><select aria-label="Year" value={year} onChange={e => update({month: `${e.target.value}-${String(month).padStart(2,'0')}`})}>{years.map(y => <option key={y}>{y}</option>)}</select></label>
+          <button disabled={monthKey === CALENDAR_END.slice(0,7)} aria-label="Next month" onClick={() => navigateMonth(1)}>→</button>
         </div>
         <div className="calendar-days" aria-hidden="true">{['M','T','W','T','F','S','S'].map((d,i) => <span key={i}>{d}</span>)}</div>
         <div className="calendar-grid" ref={grid} role="group" aria-label={`${months[month-1]} ${year}. Arrow keys move by day or week; Page Up and Page Down change month.`}>
@@ -66,7 +70,7 @@ export function CalendarExplorer({ photos }: { photos: Photo[] }) {
             }}><span>{i+1}</span><small>{count > 0 ? `${count} ${count === 1 ? 'work' : 'works'}` : '—'}</small></button>;
           })}
         </div>
-        <p className="calendar-note">Marked dates hold photographs. Select any day to explore.</p>
+        <p className="calendar-note">October 2025 – October 2026. Marked dates hold photographs. Select any day to explore.</p>
         {undated.length > 0 && <button className="undated-link" aria-pressed={selected === 'unknown'} onClick={() => update({date:'unknown'})}>Date unknown · {undated.length} photographs</button>}
       </section>
       <aside className="calendar-aside"><p className="eyebrow">The collection, day by day</p><p>Return to a day.<br/><em>Discover what stayed.</em></p><span>{photos.length} photographs across {dates.length} recorded dates.</span><button onClick={() => update({date:fallback,month:fallback.slice(0,7)})}>Latest photographed date ↗</button></aside>

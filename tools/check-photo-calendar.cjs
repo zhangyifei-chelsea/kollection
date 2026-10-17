@@ -23,3 +23,10 @@ assert.equal(index.undated.length, 2);
 assert.deepEqual(index.dates, ['2025-01-01', '2026-05-02']);
 assert.deepEqual(indexPhotoDates([]).dates, []);
 console.log('Calendar data checks passed: strict dates, leap years, rollover, multiple years, counts, unknown and empty metadata.');
+
+assert.equal(calendar.clampCalendarDate('2024-01-01'),'2025-10-01');
+assert.equal(calendar.clampCalendarDate('2027-01-01'),'2026-10-31');
+assert.equal(calendar.clampCalendarMonth('2025-09'),'2025-10');
+assert.equal(calendar.clampCalendarMonth('2026-11'),'2026-10');
+assert.equal(calendar.clampCalendarMonth('2026-06'),'2026-06');
+console.log('Inclusive exhibition calendar bounds passed.');

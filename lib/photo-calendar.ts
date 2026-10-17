@@ -22,3 +22,14 @@ export function calendarDate(year: number, month: number, day: number) {
 export function dateLabel(date: string) {
   return new Intl.DateTimeFormat('en', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
 }
+
+// Exhibition browsing window, inclusive. Capture metadata itself remains untouched.
+export const CALENDAR_START = '2025-10-01';
+export const CALENDAR_END = '2026-10-31';
+export function clampCalendarDate(date: string) {
+  return date < CALENDAR_START ? CALENDAR_START : date > CALENDAR_END ? CALENDAR_END : date;
+}
+export function clampCalendarMonth(month: string) {
+  return month < CALENDAR_START.slice(0, 7) ? CALENDAR_START.slice(0, 7)
+    : month > CALENDAR_END.slice(0, 7) ? CALENDAR_END.slice(0, 7) : month;
+}

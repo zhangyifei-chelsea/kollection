@@ -186,6 +186,7 @@ for (let index = 0; index < sourceRecords.length; index += 1) {
   const asset = {
     id,
     chapterId: record.chapterId,
+    ...(record.locationId ? { locationId: record.locationId } : {}),
     source: record.source,
     sourceSha256: hash,
     originalWidth: dimensions.width,
@@ -215,6 +216,7 @@ for (let index = 0; index < sourceRecords.length; index += 1) {
   generatedPhotos.push({
     id,
     chapterId: record.chapterId,
+    ...(record.locationId ? { locationId: record.locationId } : {}),
     gallerySrc,
     fullscreenSrc,
     width: dimensions.width,

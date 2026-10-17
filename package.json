@@ -8,10 +8,12 @@
     "build": "next build --webpack",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint app components content",
+    "lint": "eslint app components content lib",
     "verify:prototype": "node tools/check-prototype.cjs && node tools/check-touch.cjs",
     "images:build": "node scripts/generate-photo-derivatives.mjs",
-    "verify:phase2": "node tools/check-phase-2.cjs"
+    "verify:phase2": "node tools/check-phase-2.cjs",
+    "verify:geography:data": "node tools/check-photo-geography.cjs",
+    "verify:geography": "node tools/check-geographic-explorer.cjs"
   },
   "dependencies": {
     "next": "16.4.2",
@@ -25,10 +27,12 @@
     "@types/node": "22.19.7",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
+    "d3-geo": "3.1.1",
     "eslint": "9.39.2",
     "eslint-config-next": "16.4.2",
     "sharp": "^0.34.5",
     "tailwindcss": "4.1.18",
+    "topojson-client": "3.1.0",
     "typescript": "5.9.3"
   }
 }

@@ -14,12 +14,10 @@ The exhibition remains at `/`; Explore is a separate `/explore` route. Only the 
 
 Required photo fields already exist: ID, ISO capture date when known, derivative paths/dimensions, title, alt text, optional event and credit. Current dates originated in the existing derivative pipeline; Explore does not reinterpret them.
 
-## Geographic phase (proposed only; awaiting approval)
+## Geographic phase (implemented after approval)
 
-Use a separate GeographicExplorer with country/city filters and an accessible semantic location list. Both feed ExploreGallery. Dynamically import an InteractivePhotoMap client component with SSR disabled, only when the geographic view is selected. A missing WebGL or tile connection must leave the list usable.
+The approved Geographic Explorer is accessible through Explore → By place, or `/explore?view=map`. See [Geographic implementation and mock replacement guide](geographic-explorer.md).
 
-Recommend MapLibre GL JS: https://maplibre.org/maplibre-gl-js/docs/ . Use a restrained ivory/espresso vector style, minimal controls and visible attribution. Agree the tile provider and its hosting/key terms before implementation.
+GeographicExplorer provides URL-backed country/city filters and a semantic city list; InteractivePhotoMap is a separate lazy client component. It uses a local Natural Earth SVG and coordinate projection with pan, zoom and marker clustering. This lightweight implementation needs no map API key, tile service or WebGL. The earlier MapLibre proposal was replaced for this small city collection.
 
-Add an optional typed location object with stable location ID, ISO country code, country name, city name, longitude, latitude, and a coordinate-source/provider identifier or source URL. Coordinates must be validated for range and provenance against an authoritative source or geocoder. Group counts by stable location ID, derive available countries/cities only from actual photo records, and retain unknown locations in an explicit unlocated state. Existing records contain no location fields; no geographic values should be guessed from filenames, dates or chapter labels.
-
-Future URL parameters: `view=map`, `country=ISO_CODE`, `city=LOCATION_ID`; initialize from and update the same URL state as the calendar. No map dependency or implementation is included in this phase.
+Photo metadata now accepts an optional verified locationId. Verified locations and clearly labeled mock photo assignments live in separate typed modules. Invalid/missing locations are unlocated, and only locations with actual assigned photographs appear. Both explorers reuse ExploreGallery and ExhibitionLightbox.

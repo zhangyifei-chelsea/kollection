@@ -1,6 +1,8 @@
 # Calendar Explorer verification
 
-Implemented for review at `/explore`. Geographic Explorer is deliberately deferred pending Calendar approval.
+**Current status (18 October 2026):** the local environment was repaired and the production build, type check, lint, Calendar browser checks, Geographic Explorer checks, and original exhibition regression suites now pass. See [current verification](geographic-verification.md). The earlier notes below document the investigation before that repair.
+
+Calendar is available at `/explore`. Geographic Explorer was initially deferred pending Calendar approval and has now been implemented after explicit approval at `/explore?view=map`.
 
 ## Passed
 
