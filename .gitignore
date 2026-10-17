@@ -13,3 +13,9 @@ test-results/
 
 # Large private originals; public derivatives are generated from the explicit manifest.
 /2026_final/
+
+# Legacy photo archive retained locally; the exhibition uses optimized public derivatives.
+/photos/
+
+# Unused image from the retired static gallery.
+/assets/home-dark-photo-tile.jpg

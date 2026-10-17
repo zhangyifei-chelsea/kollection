@@ -19,6 +19,8 @@ The exhibition contains all 80 photographs from the local `2026_final/` source c
 
 The source originals remain in `2026_final/`, excluded from version control. `npm run images:build` validates and processes every source image, then regenerates `content/photos.ts`, `content/image-assets.json`, and `docs/image-pipeline-report.md` without modifying originals. Gallery WebP images are at most 2000px on the long edge at quality 90; fullscreen WebP images are at most 4000px at quality 94. Outputs use an embedded sRGB profile, preserve aspect ratios, and omit source EXIF/GPS metadata. The current 80 originals total 891.03 MiB; the 160 derivatives total 104.66 MiB (15.35 MiB gallery and 89.31 MiB fullscreen). See the [pipeline report](docs/image-pipeline-report.md) for exact byte totals.
 
+The prior static gallery and its 450 MiB `photos/` archive are not part of this Next.js site. The archive remains in the local workspace but is ignored by Git. The current exhibition is served only from the optimized derivatives in `public/images/`.
+
 At runtime, each horizontal wall uses its own IntersectionObserver. It loads nearby images from that wall within a 480px margin, while a shared queue limits concurrent gallery requests to three. Gallery dimensions are reserved from source metadata before loading. The homepage prioritizes its single entrance image; it requests no fullscreen images until a photo opens. PhotoSwipe and its core are dynamically loaded at that interaction, and PhotoSwipe preloads one adjacent image on either side.
 
 If the original source collection is unavailable on another checkout, existing generated derivatives remain usable. Regenerating requires access to the ignored source images. Avoid deploying the originals.

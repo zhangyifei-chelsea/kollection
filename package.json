@@ -4,9 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "cache:photos": "node tools/cache-photos.mjs",
-    "download:x-hd": "node tools/download-x-hd-from-manifest.mjs",
-    "serve": "python3 -m http.server 4173",
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
@@ -17,7 +14,6 @@
     "verify:phase2": "node tools/check-phase-2.cjs"
   },
   "dependencies": {
-    "@supabase/supabase-js": "2.45.0",
     "next": "16.4.2",
     "photoswipe": "^5.4.4",
     "react": "19.3.1",
