@@ -1,0 +1,2369 @@
+{
+  "version": 1,
+  "sourceDirectory": "2026_final",
+  "conversion": {
+    "format": "WebP",
+    "colorProfile": "sRGB",
+    "gallery": {
+      "maxEdge": 2000,
+      "quality": 90,
+      "effort": 6
+    },
+    "fullscreen": {
+      "maxEdge": 4000,
+      "quality": 94,
+      "effort": 6
+    }
+  },
+  "sizes": {
+    "original": {
+      "files": 80,
+      "bytes": 934311050
+    },
+    "gallery": {
+      "files": 80,
+      "bytes": 16094396
+    },
+    "fullscreen": {
+      "files": 80,
+      "bytes": 93648668
+    },
+    "derivativesCombined": {
+      "files": 160,
+      "bytes": 109743064
+    },
+    "reductionVsOriginalBytes": 824567986,
+    "reductionVsOriginalPercent": 88.25
+  },
+  "assets": [
+    {
+      "id": "K-001",
+      "chapterId": "closer",
+      "source": "2026_final/106A0084.JPG",
+      "sourceSha256": "6ee3f84db27f3ebcf23644b8a23eda846bd36539db97a7677ec1bff279e7a557",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 6552731,
+      "gallery": {
+        "path": "/images/gallery/k-001-6ee3f84db27f.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 369076
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-001-6ee3f84db27f.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1716216
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#182858",
+      "date": "2025-10-28"
+    },
+    {
+      "id": "K-002",
+      "chapterId": "closer",
+      "source": "2026_final/106A1938.JPG",
+      "sourceSha256": "f01a68bf2cc33fa07709ee15612a45d6e536978325211d92567c7dea602b549f",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 6183529,
+      "gallery": {
+        "path": "/images/gallery/k-002-f01a68bf2cc3.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 352680
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-002-f01a68bf2cc3.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1570378
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#687888",
+      "date": "2026-05-02"
+    },
+    {
+      "id": "K-003",
+      "chapterId": "closer",
+      "source": "2026_final/106A8638.JPG",
+      "sourceSha256": "e763025032c5088c6309142892c04b57a144bb0a801a070e4bf1347283af1d36",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 4811264,
+      "gallery": {
+        "path": "/images/gallery/k-003-e763025032c5.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 198084
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-003-e763025032c5.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 983858
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-07-05"
+    },
+    {
+      "id": "K-004",
+      "chapterId": "closer",
+      "source": "2026_final/106A8739.JPG",
+      "sourceSha256": "5f8e90f8092895bb5c0822c958835efb738cb67bb61f8db9821d207f75e333ab",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 4669133,
+      "gallery": {
+        "path": "/images/gallery/k-004-5f8e90f80928.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 212356
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-004-5f8e90f80928.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 997936
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#e8e8f8",
+      "date": "2026-05-02"
+    },
+    {
+      "id": "K-005",
+      "chapterId": "closer",
+      "source": "2026_final/106A8760.JPG",
+      "sourceSha256": "52186ec14cc3cc90821096132be699b8a38716f09aa0add5537ee4579b927dd5",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 4624986,
+      "gallery": {
+        "path": "/images/gallery/k-005-52186ec14cc3.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 199694
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-005-52186ec14cc3.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 983692
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#e8e8f8",
+      "date": "2026-05-02"
+    },
+    {
+      "id": "K-006",
+      "chapterId": "closer",
+      "source": "2026_final/106A9983.JPG",
+      "sourceSha256": "8af5f3742db56a96895ed15113f200fd77b1d36f33527d46af80663db5a1278f",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 5243632,
+      "gallery": {
+        "path": "/images/gallery/k-006-8af5f3742db5.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 260998
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-006-8af5f3742db5.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1208858
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#f8f8f8",
+      "date": "2026-05-02"
+    },
+    {
+      "id": "K-007",
+      "chapterId": "closer",
+      "source": "2026_final/124A0090.JPG",
+      "sourceSha256": "a7b98c4e15ee7bd905308d94a9064d053d91f7bc9cb77dc7c1ac71f092fa75c8",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 14719668,
+      "gallery": {
+        "path": "/images/gallery/k-007-a7b98c4e15ee.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 287388
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-007-a7b98c4e15ee.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1633016
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#f8f8f8",
+      "date": "2026-05-10"
+    },
+    {
+      "id": "K-008",
+      "chapterId": "closer",
+      "source": "2026_final/124A0172.JPG",
+      "sourceSha256": "413358799406d5594e73a05d3297b0d157b8b3ec64dbe810b50ef2f0c85c604e",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 12440690,
+      "gallery": {
+        "path": "/images/gallery/k-008-413358799406.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 150312
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-008-413358799406.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 937726
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-05-29"
+    },
+    {
+      "id": "K-009",
+      "chapterId": "between",
+      "source": "2026_final/124A1172.JPG",
+      "sourceSha256": "19024ac9d0754d90fc274fc7725b64e200516a6b601135b653df9c01f915c015",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 9009242,
+      "gallery": {
+        "path": "/images/gallery/k-009-19024ac9d075.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 101454
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-009-19024ac9d075.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 665998
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-07-04"
+    },
+    {
+      "id": "K-010",
+      "chapterId": "between",
+      "source": "2026_final/124A2113.JPG",
+      "sourceSha256": "90cbe09e4029b27da8ffff2f8d320bd80522efc53fb3a5a10b48f0774d7146c2",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 12320567,
+      "gallery": {
+        "path": "/images/gallery/k-010-90cbe09e4029.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 183702
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-010-90cbe09e4029.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 1082628
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-05-17"
+    },
+    {
+      "id": "K-011",
+      "chapterId": "between",
+      "source": "2026_final/124A2584.JPG",
+      "sourceSha256": "2882a62e09f8da8b89f1aa4524043b213fc570bb8f237d3c03382555d91a3744",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 10592797,
+      "gallery": {
+        "path": "/images/gallery/k-011-2882a62e09f8.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 234900
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-011-2882a62e09f8.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1045836
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#f8f8f8",
+      "date": "2026-08-14"
+    },
+    {
+      "id": "K-012",
+      "chapterId": "between",
+      "source": "2026_final/124A2589.JPG",
+      "sourceSha256": "fe2c04cac30f0a00c83e63532550bee717bcd40894cd6ede54f087f39d0672ab",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 11450827,
+      "gallery": {
+        "path": "/images/gallery/k-012-fe2c04cac30f.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 289606
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-012-fe2c04cac30f.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1272660
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#f8f8f8",
+      "date": "2026-08-14"
+    },
+    {
+      "id": "K-013",
+      "chapterId": "colors",
+      "source": "2026_final/124A2801.JPG",
+      "sourceSha256": "8475eaca2dc1d9b5cb843e1dcaae155a4d7923e5d0cab10cf543de3191e3edb1",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 12059006,
+      "gallery": {
+        "path": "/images/gallery/k-013-8475eaca2dc1.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 186658
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-013-8475eaca2dc1.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 921426
+      },
+      "title": "A distinctive look",
+      "alt": "K in a distinctive look, captured during an appearance.",
+      "tags": [
+        "style",
+        "appearance"
+      ],
+      "dominantColor": "#081828",
+      "date": "2026-07-11"
+    },
+    {
+      "id": "K-014",
+      "chapterId": "colors",
+      "source": "2026_final/124A3270.JPG",
+      "sourceSha256": "b5d1a0ebf5e814f1fd5c1e526101313358c0b6afe95cfc9581ce548c333d6a96",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 12921441,
+      "gallery": {
+        "path": "/images/gallery/k-014-b5d1a0ebf5e8.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 174236
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-014-b5d1a0ebf5e8.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 1152470
+      },
+      "title": "A distinctive look",
+      "alt": "K in a distinctive look, captured during an appearance.",
+      "tags": [
+        "style",
+        "appearance"
+      ],
+      "dominantColor": "#b8a898",
+      "date": "2026-04-28"
+    },
+    {
+      "id": "K-015",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A3719.JPG",
+      "sourceSha256": "52112f818281626c8a4b3d6de64f75fbc67076a01b76ac64fbd2c8915e7071c0",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 11574900,
+      "gallery": {
+        "path": "/images/gallery/k-015-52112f818281.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 136534
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-015-52112f818281.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 853826
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#080818",
+      "date": "2026-07-05"
+    },
+    {
+      "id": "K-016",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A3780.JPG",
+      "sourceSha256": "e2168a33a1bb1d49231ae2344bec2ac8c018c1ccc506dc8b71b5b8e0a6a415ea",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 15472994,
+      "gallery": {
+        "path": "/images/gallery/k-016-e2168a33a1bb.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 228750
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-016-e2168a33a1bb.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 1630534
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#384878",
+      "date": "2026-05-10"
+    },
+    {
+      "id": "K-017",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A4316.JPG",
+      "sourceSha256": "1def2e8bab4ef631f7fa84c2445598ba5dc2393a50e4e28ece3fda7a52017669",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 12713915,
+      "gallery": {
+        "path": "/images/gallery/k-017-1def2e8bab4e.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 167708
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-017-1def2e8bab4e.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 884408
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#f8f8f8",
+      "date": "2026-10-03"
+    },
+    {
+      "id": "K-018",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A4807.JPG",
+      "sourceSha256": "96cc8d09de12114a9e0f36bf0dcd460a4ade7fc5f66e5709c8bae493523109b7",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 11871716,
+      "gallery": {
+        "path": "/images/gallery/k-018-96cc8d09de12.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 161368
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-018-96cc8d09de12.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 812768
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#180828",
+      "date": "2026-10-03"
+    },
+    {
+      "id": "K-019",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A4901.JPG",
+      "sourceSha256": "35352be2adbc0b2e35360ba8919c60ee82d2104e051bc909fccfbcba93904c59",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 12016527,
+      "gallery": {
+        "path": "/images/gallery/k-019-35352be2adbc.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 125146
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-019-35352be2adbc.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 892118
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-10-03"
+    },
+    {
+      "id": "K-020",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A4910.JPG",
+      "sourceSha256": "9ac18a089dc2d5ebb3b16bd32f6f37df53cce297b2157a1cebea5275336b93ba",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 13230179,
+      "gallery": {
+        "path": "/images/gallery/k-020-9ac18a089dc2.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 142380
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-020-9ac18a089dc2.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1077340
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#281878",
+      "date": "2026-10-03"
+    },
+    {
+      "id": "K-021",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A4989.JPG",
+      "sourceSha256": "7637277efb80f6ca97f4755da3f73146e035283c9ab05514037f17c03bd9da1f",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 13114124,
+      "gallery": {
+        "path": "/images/gallery/k-021-7637277efb80.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 164362
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-021-7637277efb80.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 858920
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#181878",
+      "date": "2026-08-15"
+    },
+    {
+      "id": "K-022",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A5013.JPG",
+      "sourceSha256": "f6ad49311e5e0c3bf3cb0b5b613b188b02059dd279cda0e880c7d67fbbd12e7d",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 12353305,
+      "gallery": {
+        "path": "/images/gallery/k-022-f6ad49311e5e.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 123788
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-022-f6ad49311e5e.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 893310
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#181868",
+      "date": "2026-08-15"
+    },
+    {
+      "id": "K-023",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A5364(1).JPG",
+      "sourceSha256": "dc35239129c60f82fa70f95d99bc8c9a42a5e44d90b729e0ae702a758131e2e1",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 12563930,
+      "gallery": {
+        "path": "/images/gallery/k-023-dc35239129c6.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 135114
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-023-dc35239129c6.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 979236
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#78b8f8",
+      "date": "2026-10-03"
+    },
+    {
+      "id": "K-024",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A6180.JPG",
+      "sourceSha256": "ccd0a68f3a3d3e1a0b366c43f7ac6b0c6dbc511c76ae243ad0daecb778afe0df",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 12390271,
+      "gallery": {
+        "path": "/images/gallery/k-024-ccd0a68f3a3d.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 147648
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-024-ccd0a68f3a3d.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 906378
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-04-06"
+    },
+    {
+      "id": "K-025",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A6412.JPG",
+      "sourceSha256": "adff2b37d0e0ccc9ddfecf737668724108a0cd998b05502a62533f72d3d31019",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 14024338,
+      "gallery": {
+        "path": "/images/gallery/k-025-adff2b37d0e0.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 121778
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-025-adff2b37d0e0.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1115174
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#181828",
+      "date": "2026-09-06"
+    },
+    {
+      "id": "K-026",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A6421.JPG",
+      "sourceSha256": "2e46ab058c1ba57652066489e56dc51d129b2dc5448430554210b9c576915b7c",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 13951437,
+      "gallery": {
+        "path": "/images/gallery/k-026-2e46ab058c1b.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 117276
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-026-2e46ab058c1b.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1091356
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#181828",
+      "date": "2026-09-06"
+    },
+    {
+      "id": "K-027",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A6578.JPG",
+      "sourceSha256": "9d65f604f67716b62a998c258eaf286d5c8cf79ea99d3aec70c40e0281fa7e09",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 9795845,
+      "gallery": {
+        "path": "/images/gallery/k-027-9d65f604f677.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 61888
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-027-9d65f604f677.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 479186
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-04-06"
+    },
+    {
+      "id": "K-028",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A6922.JPG",
+      "sourceSha256": "a32a52a058f29a0bca346df05b576e51daa8f82fc3c7b2b3cb5461d9bfe22630",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 12608778,
+      "gallery": {
+        "path": "/images/gallery/k-028-a32a52a058f2.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 177792
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-028-a32a52a058f2.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 1137666
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-06-21"
+    },
+    {
+      "id": "K-029",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A6929.JPG",
+      "sourceSha256": "a0e7f5941d93e7d52ff8228a607569ad95cf39d324ae1cba74e8a0034f9fb9b9",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 11575133,
+      "gallery": {
+        "path": "/images/gallery/k-029-a0e7f5941d93.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 150572
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-029-a0e7f5941d93.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 916130
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-06-21"
+    },
+    {
+      "id": "K-030",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A7424.JPG",
+      "sourceSha256": "d28d231db0c62f6dfe7017dbaa3f4f4bed60b4b5f6cfc6551ff722556d267784",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 12783677,
+      "gallery": {
+        "path": "/images/gallery/k-030-d28d231db0c6.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 194292
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-030-d28d231db0c6.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1208918
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#081828",
+      "date": "2026-06-21"
+    },
+    {
+      "id": "K-031",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A7464.JPG",
+      "sourceSha256": "d2388d69246ca1e2a0bd1e294c43eec188bd944da1b9e53377c7970e9a049c48",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 19414617,
+      "gallery": {
+        "path": "/images/gallery/k-031-d2388d69246c.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 442020
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-031-d2388d69246c.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 2739994
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#383868",
+      "date": "2025-10-25"
+    },
+    {
+      "id": "K-032",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A7471.JPG",
+      "sourceSha256": "7eb118e6dea2c1ab73d507d5ce9a9ee4f24ccda77b1db50b53ac6416417e70af",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 19587067,
+      "gallery": {
+        "path": "/images/gallery/k-032-7eb118e6dea2.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 493908
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-032-7eb118e6dea2.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 2847114
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#3888f8",
+      "date": "2025-10-25"
+    },
+    {
+      "id": "K-033",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A9457.JPG",
+      "sourceSha256": "82fdd7b5660e40c3589229339b6fbf351ccdbfd4fdd6383b037e8915d030e90a",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 12344894,
+      "gallery": {
+        "path": "/images/gallery/k-033-82fdd7b5660e.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 178184
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-033-82fdd7b5660e.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 1057186
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#d8d8f8",
+      "date": "2026-05-16"
+    },
+    {
+      "id": "K-034",
+      "chapterId": "colors",
+      "source": "2026_final/124A9715.JPG",
+      "sourceSha256": "0cc9eda074cf46779694b682c5b855c3961aba67b22f17955f0be63e84c81b4e",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 15417004,
+      "gallery": {
+        "path": "/images/gallery/k-034-0cc9eda074cf.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 262690
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-034-0cc9eda074cf.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1684948
+      },
+      "title": "A distinctive look",
+      "alt": "K in a distinctive look, captured during an appearance.",
+      "tags": [
+        "style",
+        "appearance"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-05-29"
+    },
+    {
+      "id": "K-035",
+      "chapterId": "colors",
+      "source": "2026_final/1539875c9246111aec53b5cf89a59d7d.JPG",
+      "sourceSha256": "2280b3ec6783c4270c9eeb6a926580d6a2e1ca9e4958ef0fdb8621c7c9939f32",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 6584619,
+      "gallery": {
+        "path": "/images/gallery/k-035-2280b3ec6783.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 256972
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-035-2280b3ec6783.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1538084
+      },
+      "title": "A distinctive look",
+      "alt": "K in a distinctive look, captured during an appearance.",
+      "tags": [
+        "style",
+        "appearance"
+      ],
+      "dominantColor": "#181818"
+    },
+    {
+      "id": "K-036",
+      "chapterId": "spotlight",
+      "source": "2026_final/181A4949.JPG",
+      "sourceSha256": "ec93a48e8917e9c732b4304d7e37da014daed5c87aabe271c49571a3951c8083",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 7332619,
+      "gallery": {
+        "path": "/images/gallery/k-036-ec93a48e8917.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 288848
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-036-ec93a48e8917.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1699256
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#181818",
+      "date": "2026-04-21"
+    },
+    {
+      "id": "K-037",
+      "chapterId": "closer",
+      "source": "2026_final/2025-11-30 185723(5).jpg",
+      "sourceSha256": "8676f68b4ad7c662ab9e270b3c2a298c96b19dfbd76a884901cecdbf36d49cd1",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 18865338,
+      "gallery": {
+        "path": "/images/gallery/k-037-8676f68b4ad7.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 331810
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-037-8676f68b4ad7.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 2582906
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#080808",
+      "date": "2025-11-30"
+    },
+    {
+      "id": "K-038",
+      "chapterId": "closer",
+      "source": "2026_final/2025-11-30 185727(3).jpg",
+      "sourceSha256": "77b7d9fce8ea4dd9f232136cc27454fd28b1398f16ef882753ab32d7cc449bc9",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 19108110,
+      "gallery": {
+        "path": "/images/gallery/k-038-77b7d9fce8ea.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 381932
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-038-77b7d9fce8ea.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 2563018
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#080808",
+      "date": "2025-11-30"
+    },
+    {
+      "id": "K-039",
+      "chapterId": "spotlight",
+      "source": "2026_final/2026-09-05 下午80127_20260906_052035.jpg",
+      "sourceSha256": "966521f2040f3a787d138d6ad9f27545a34f5dd123a03d53f5f1b10b436d38be",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 5120057,
+      "gallery": {
+        "path": "/images/gallery/k-039-966521f2040f.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 128386
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-039-966521f2040f.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 935956
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#081828",
+      "date": "2026-09-05"
+    },
+    {
+      "id": "K-040",
+      "chapterId": "spotlight",
+      "source": "2026_final/2026-09-05 下午80127_20260906_054551.jpg",
+      "sourceSha256": "603b7e389623a063186c1edce2c3139317f7c05770e08ae177c9d9ea44e1516a",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 5167408,
+      "gallery": {
+        "path": "/images/gallery/k-040-603b7e389623.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 136120
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-040-603b7e389623.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 959986
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#081828",
+      "date": "2026-09-05"
+    },
+    {
+      "id": "K-041",
+      "chapterId": "closer",
+      "source": "2026_final/251225k红毯 (380).JPG",
+      "sourceSha256": "9c8f750b0256f350558fa59d411dc73eebfa839d61868ebc79de9c5c1d390955",
+      "originalWidth": 6000,
+      "originalHeight": 4000,
+      "originalBytes": 7699231,
+      "gallery": {
+        "path": "/images/gallery/k-041-9c8f750b0256.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 182728
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-041-9c8f750b0256.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1210156
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#181818",
+      "date": "2025-12-25",
+      "event": "Red carpet"
+    },
+    {
+      "id": "K-042",
+      "chapterId": "spotlight",
+      "source": "2026_final/4O2A5756.JPG",
+      "sourceSha256": "1fece7d18c182b7f600bf055334b84931745848b1a735ef8c6d080cefe28bd43",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 5742907,
+      "gallery": {
+        "path": "/images/gallery/k-042-1fece7d18c18.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 211220
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-042-1fece7d18c18.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1036514
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#d8e8f8",
+      "date": "2025-12-25"
+    },
+    {
+      "id": "K-043",
+      "chapterId": "spotlight",
+      "source": "2026_final/4O2A6325.JPG",
+      "sourceSha256": "8e912e50c041aa4aed1367e72a5cbd3fb64c95fab825c47d47dea0d7ce9095d6",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 5206393,
+      "gallery": {
+        "path": "/images/gallery/k-043-8e912e50c041.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 188340
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-043-8e912e50c041.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 911638
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#080818",
+      "date": "2025-12-25"
+    },
+    {
+      "id": "K-044",
+      "chapterId": "spotlight",
+      "source": "2026_final/4V8A0419.JPG",
+      "sourceSha256": "2530c556d1f74abd6d2ace8633dcdbb4a46115b5902735c477bac59445d1e5cf",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 15297873,
+      "gallery": {
+        "path": "/images/gallery/k-044-2530c556d1f7.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 176250
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-044-2530c556d1f7.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1018228
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-04-27"
+    },
+    {
+      "id": "K-045",
+      "chapterId": "spotlight",
+      "source": "2026_final/4V8A0518.JPG",
+      "sourceSha256": "5b6cfe2caf2c3d5f0448d670532c64c114c70199b64afa79ebf30347b837354c",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 12966977,
+      "gallery": {
+        "path": "/images/gallery/k-045-5b6cfe2caf2c.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 146774
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-045-5b6cfe2caf2c.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 738422
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-10-03"
+    },
+    {
+      "id": "K-046",
+      "chapterId": "closer",
+      "source": "2026_final/4V8A1735.JPG",
+      "sourceSha256": "fb420917e6ed85a103936a73c946afeb7d23d447f02601ec91fae3ceebf2d227",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 22335943,
+      "gallery": {
+        "path": "/images/gallery/k-046-fb420917e6ed.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 344104
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-046-fb420917e6ed.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1584996
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#c8c8d8",
+      "date": "2026-04-28"
+    },
+    {
+      "id": "K-047",
+      "chapterId": "closer",
+      "source": "2026_final/4V8A1990.JPG",
+      "sourceSha256": "fdc18440599c9e5df1497f3069125ecd9e01dcff81cae9895cb0a947f025830f",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 14178532,
+      "gallery": {
+        "path": "/images/gallery/k-047-fdc18440599c.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 151134
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-047-fdc18440599c.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 942478
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-09-16"
+    },
+    {
+      "id": "K-048",
+      "chapterId": "closer",
+      "source": "2026_final/4V8A2029.JPG",
+      "sourceSha256": "5620505c0985806f2d77aa038aa5b78fbc7f72a82778ddfd55a0e2044f11ea3f",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 21390177,
+      "gallery": {
+        "path": "/images/gallery/k-048-5620505c0985.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 213996
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-048-5620505c0985.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1704386
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#181818",
+      "date": "2026-09-25"
+    },
+    {
+      "id": "K-049",
+      "chapterId": "closer",
+      "source": "2026_final/4V8A2269.JPG",
+      "sourceSha256": "347a4134a472def48f32d4db369ec28535a74848fe274c3b1dc686882442572c",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 19671248,
+      "gallery": {
+        "path": "/images/gallery/k-049-347a4134a472.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 178648
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-049-347a4134a472.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1405108
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#f8f8f8",
+      "date": "2026-09-25"
+    },
+    {
+      "id": "K-050",
+      "chapterId": "closer",
+      "source": "2026_final/4V8A3740.JPG",
+      "sourceSha256": "40226ecdf9bf120641ea6595145f81a680cbda983aaf09df038ae03effa36ed9",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 14932209,
+      "gallery": {
+        "path": "/images/gallery/k-050-40226ecdf9bf.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 153502
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-050-40226ecdf9bf.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 907134
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#180808",
+      "date": "2026-09-27"
+    },
+    {
+      "id": "K-051",
+      "chapterId": "closer",
+      "source": "2026_final/4V8A4153.JPG",
+      "sourceSha256": "7cd145e5adadcbfadfa01b9bfe46a59a501b4f8b646404c40b9de5923209d2c1",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 14072229,
+      "gallery": {
+        "path": "/images/gallery/k-051-7cd145e5adad.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 184706
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-051-7cd145e5adad.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 1009804
+      },
+      "title": "A closer moment",
+      "alt": "K during a close appearance or audience interaction.",
+      "tags": [
+        "portrait",
+        "connection"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-09-16"
+    },
+    {
+      "id": "K-052",
+      "chapterId": "colors",
+      "source": "2026_final/4V8A4840.JPG",
+      "sourceSha256": "e1ed7646f5a364a70490f16fe38774b7467f88f09ae95fc5c4f660d1f917d4fb",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 14584797,
+      "gallery": {
+        "path": "/images/gallery/k-052-e1ed7646f5a3.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 175124
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-052-e1ed7646f5a3.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 773772
+      },
+      "title": "A distinctive look",
+      "alt": "K in a distinctive look, captured during an appearance.",
+      "tags": [
+        "style",
+        "appearance"
+      ],
+      "dominantColor": "#180808",
+      "date": "2026-09-27"
+    },
+    {
+      "id": "K-053",
+      "chapterId": "colors",
+      "source": "2026_final/4V8A4854.JPG",
+      "sourceSha256": "e87ce421145f8b4c0d2b0a8770b9fcb331f42f7caeb6c8e2a78e12503a2b3739",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 16553139,
+      "gallery": {
+        "path": "/images/gallery/k-053-e87ce421145f.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 251946
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-053-e87ce421145f.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1278628
+      },
+      "title": "A distinctive look",
+      "alt": "K in a distinctive look, captured during an appearance.",
+      "tags": [
+        "style",
+        "appearance"
+      ],
+      "dominantColor": "#180808",
+      "date": "2026-09-27"
+    },
+    {
+      "id": "K-054",
+      "chapterId": "colors",
+      "source": "2026_final/4V8A5653.JPG",
+      "sourceSha256": "ac4a318fc95e78daf001de131a84c16a192624e8d70e80d6823e32cf7083122b",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 12692282,
+      "gallery": {
+        "path": "/images/gallery/k-054-ac4a318fc95e.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 143662
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-054-ac4a318fc95e.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 767772
+      },
+      "title": "A distinctive look",
+      "alt": "K in a distinctive look, captured during an appearance.",
+      "tags": [
+        "style",
+        "appearance"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-09-28"
+    },
+    {
+      "id": "K-055",
+      "chapterId": "colors",
+      "source": "2026_final/4V8A5767.JPG",
+      "sourceSha256": "c1cdcdcc4e4e0cb9dfd7ff0f10c8fccbb530d292c1e1e7b6cc3da016c8be13e4",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 14956098,
+      "gallery": {
+        "path": "/images/gallery/k-055-c1cdcdcc4e4e.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 110072
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-055-c1cdcdcc4e4e.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 808668
+      },
+      "title": "A distinctive look",
+      "alt": "K in a distinctive look, captured during an appearance.",
+      "tags": [
+        "style",
+        "appearance"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-09-28"
+    },
+    {
+      "id": "K-056",
+      "chapterId": "colors",
+      "source": "2026_final/4V8A6848.JPG",
+      "sourceSha256": "073c8a430d1cd4cfdae618ee087d75db5b944f848af7871141bcf7f8a2c12596",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 15393865,
+      "gallery": {
+        "path": "/images/gallery/k-056-073c8a430d1c.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 151496
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-056-073c8a430d1c.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 955812
+      },
+      "title": "A distinctive look",
+      "alt": "K in a distinctive look, captured during an appearance.",
+      "tags": [
+        "style",
+        "appearance"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-09-28"
+    },
+    {
+      "id": "K-057",
+      "chapterId": "colors",
+      "source": "2026_final/4V8A7104.JPG",
+      "sourceSha256": "29e0b2b609b8cb21454d5898a030bd5a2a22740b3b78c678d33eb494f780162a",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 14509298,
+      "gallery": {
+        "path": "/images/gallery/k-057-29e0b2b609b8.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 190218
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-057-29e0b2b609b8.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 966054
+      },
+      "title": "A distinctive look",
+      "alt": "K in a distinctive look, captured during an appearance.",
+      "tags": [
+        "style",
+        "appearance"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-09-28"
+    },
+    {
+      "id": "K-058",
+      "chapterId": "colors",
+      "source": "2026_final/4V8A7153.JPG",
+      "sourceSha256": "bc383207628fa8b6a1f536dc5d0e59f88b6d45677958dc6d557cdc8b97916868",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 14531182,
+      "gallery": {
+        "path": "/images/gallery/k-058-bc383207628f.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 175884
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-058-bc383207628f.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 907502
+      },
+      "title": "A distinctive look",
+      "alt": "K in a distinctive look, captured during an appearance.",
+      "tags": [
+        "style",
+        "appearance"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-09-28"
+    },
+    {
+      "id": "K-059",
+      "chapterId": "colors",
+      "source": "2026_final/7d92f29f0b7ebe109088df76bde9ba99.JPG",
+      "sourceSha256": "9253ed833ecc5fafcbcf489a7b53d620def4276a735199a67c5b9190160d5b28",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 2546809,
+      "gallery": {
+        "path": "/images/gallery/k-059-9253ed833ecc.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 207976
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-059-9253ed833ecc.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1151600
+      },
+      "title": "A distinctive look",
+      "alt": "K in a distinctive look, captured during an appearance.",
+      "tags": [
+        "style",
+        "appearance"
+      ],
+      "dominantColor": "#080808",
+      "date": "2025-11-07"
+    },
+    {
+      "id": "K-060",
+      "chapterId": "between",
+      "source": "2026_final/9c91b5fe0665642b204010dda16a05f9.JPG",
+      "sourceSha256": "78514eb9a0f437280e383b9d67c22b750359332a68f6cb20bb23a4899aa610d6",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 5534349,
+      "gallery": {
+        "path": "/images/gallery/k-060-78514eb9a0f4.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 233824
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-060-78514eb9a0f4.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1234462
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#081818",
+      "date": "2025-11-07"
+    },
+    {
+      "id": "K-061",
+      "chapterId": "between",
+      "source": "2026_final/C18A2127.JPG",
+      "sourceSha256": "4ce87677a4a3350a201b5bfd4f7ad1e97a045f8dd4e8b573953d0f0acbcfcc2f",
+      "originalWidth": 6000,
+      "originalHeight": 4000,
+      "originalBytes": 7307953,
+      "gallery": {
+        "path": "/images/gallery/k-061-4ce87677a4a3.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 241630
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-061-4ce87677a4a3.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1448910
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#f8f8f8",
+      "date": "2026-01-01"
+    },
+    {
+      "id": "K-062",
+      "chapterId": "between",
+      "source": "2026_final/C18A2541.JPG",
+      "sourceSha256": "9e059899378e39bb48d69bb5d9eda11b6d4d75a997f0eceb9999aa4345b033ab",
+      "originalWidth": 6000,
+      "originalHeight": 4000,
+      "originalBytes": 6389948,
+      "gallery": {
+        "path": "/images/gallery/k-062-9e059899378e.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 207374
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-062-9e059899378e.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1042504
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#182838",
+      "date": "2026-01-01"
+    },
+    {
+      "id": "K-063",
+      "chapterId": "between",
+      "source": "2026_final/C18A2741.JPG",
+      "sourceSha256": "0b9d12c3d01ee60f0342c04c12e1f6f2108f4d6022d317c676d1176e75bd9193",
+      "originalWidth": 6000,
+      "originalHeight": 4000,
+      "originalBytes": 6660532,
+      "gallery": {
+        "path": "/images/gallery/k-063-0b9d12c3d01e.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 253086
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-063-0b9d12c3d01e.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1171322
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#080818",
+      "date": "2026-01-01"
+    },
+    {
+      "id": "K-064",
+      "chapterId": "between",
+      "source": "2026_final/f03769522799abb57a665bd3a1713b9c.JPG",
+      "sourceSha256": "16ecb683c50185260dc880038c31900d7d6493f299bc5f5c07fae69cca70b628",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 2772071,
+      "gallery": {
+        "path": "/images/gallery/k-064-16ecb683c501.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 239578
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-064-16ecb683c501.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1301126
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#080808",
+      "date": "2025-11-07"
+    },
+    {
+      "id": "K-065",
+      "chapterId": "between",
+      "source": "2026_final/IM1G0720.JPG",
+      "sourceSha256": "afded1f6277ff237e1ef1113a1c696135c2dafcc36a057d157a01097d7d8dd1e",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 5670536,
+      "gallery": {
+        "path": "/images/gallery/k-065-afded1f6277f.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 167204
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-065-afded1f6277f.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1141358
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-08-13"
+    },
+    {
+      "id": "K-066",
+      "chapterId": "between",
+      "source": "2026_final/IM1G4753.JPG",
+      "sourceSha256": "a420020759691e74d4f460245f8fcb359ce16e575b29a719dd6dda14c6ccdb8b",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 4875541,
+      "gallery": {
+        "path": "/images/gallery/k-066-a42002075969.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 190018
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-066-a42002075969.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 883554
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#181828",
+      "date": "2025-10-30"
+    },
+    {
+      "id": "K-067",
+      "chapterId": "between",
+      "source": "2026_final/IM1G4757.JPG",
+      "sourceSha256": "a9057f2c40c4d7950b72d8844dd78824fb83639b8e6e32c947e2ce6629bc8fdc",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 4651854,
+      "gallery": {
+        "path": "/images/gallery/k-067-a9057f2c40c4.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 155884
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-067-a9057f2c40c4.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 746632
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#181828",
+      "date": "2025-10-30"
+    },
+    {
+      "id": "K-068",
+      "chapterId": "spotlight",
+      "source": "2026_final/k468.JPG",
+      "sourceSha256": "1f00504e1e101013eed013226115e3ce1fc58574ede77850114d003f7ac13947",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 14426748,
+      "gallery": {
+        "path": "/images/gallery/k-068-1f00504e1e10.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 153592
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-068-1f00504e1e10.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1000492
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#182848",
+      "date": "2026-06-18"
+    },
+    {
+      "id": "K-069",
+      "chapterId": "between",
+      "source": "2026_final/target.JPG",
+      "sourceSha256": "95bc0d073b2cfce91e8659ed10f0d3a7a8c2056819f8c716b0975e7b4ce7f4c6",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 7016437,
+      "gallery": {
+        "path": "/images/gallery/k-069-95bc0d073b2c.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 301046
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-069-95bc0d073b2c.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1717106
+      },
+      "title": "In between",
+      "alt": "K in an unposed moment away from the stage.",
+      "tags": [
+        "candid",
+        "in-between"
+      ],
+      "dominantColor": "#181818"
+    },
+    {
+      "id": "K-070",
+      "chapterId": "spotlight",
+      "source": "2026_final/内场295.JPG",
+      "sourceSha256": "ea057352515916a1bffc11445cfa1d3dfdf7e65e6df815e4131f2fa7be5cd02e",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 12620392,
+      "gallery": {
+        "path": "/images/gallery/k-070-ea0573525159.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 90590
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-070-ea0573525159.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 796636
+      },
+      "title": "Live performance",
+      "alt": "K performing on stage during a live performance.",
+      "tags": [
+        "live",
+        "stage"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-05-16"
+    },
+    {
+      "id": "K-071",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A2204.JPG",
+      "sourceSha256": "d1c5c2730b0f7790d1450bca59f49f74d1490f40087175f052b6bbadee7465ae",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 12530719,
+      "gallery": {
+        "path": "/images/gallery/k-071-d1c5c2730b0f.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 193796
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-071-d1c5c2730b0f.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 1151124
+      },
+      "title": "Among the lights",
+      "alt": "K sharing the stage with fellow performers.",
+      "tags": [
+        "live",
+        "stage",
+        "together"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-05-17"
+    },
+    {
+      "id": "K-072",
+      "chapterId": "colors",
+      "source": "2026_final/124A4336(1).JPG",
+      "sourceSha256": "14ae3efe566a204c60aecfc0183c00d6d323d57123d32774fe315400d3aef73d",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 12549421,
+      "gallery": {
+        "path": "/images/gallery/k-072-14ae3efe566a.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 148816
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-072-14ae3efe566a.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 812458
+      },
+      "title": "A playful look",
+      "alt": "K making a playful pose in a graphic T-shirt.",
+      "tags": [
+        "playful",
+        "style",
+        "expression"
+      ],
+      "dominantColor": "#181838",
+      "date": "2026-10-03"
+    },
+    {
+      "id": "K-073",
+      "chapterId": "spotlight",
+      "source": "2026_final/124A9470.JPG",
+      "sourceSha256": "f96007962cbdb7dd1d8a699c08543a84834a9e00b41bdf501706ca893a1a7411",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 14479659,
+      "gallery": {
+        "path": "/images/gallery/k-073-f96007962cbd.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 263884
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-073-f96007962cbd.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 1489996
+      },
+      "title": "Together on stage",
+      "alt": "K standing with fellow performers at an event.",
+      "tags": [
+        "live",
+        "stage",
+        "together"
+      ],
+      "dominantColor": "#d8d8f8",
+      "date": "2026-05-16"
+    },
+    {
+      "id": "K-074",
+      "chapterId": "closer",
+      "source": "2026_final/4V8A2305.JPG",
+      "sourceSha256": "179cf0b0f20af62fd421db0469d96d82b7d5c180957b61437265d1a05ea0530a",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 18883430,
+      "gallery": {
+        "path": "/images/gallery/k-074-179cf0b0f20a.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 174424
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-074-179cf0b0f20a.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1101630
+      },
+      "title": "A moment with the audience",
+      "alt": "K greeting people during a public appearance.",
+      "tags": [
+        "connection",
+        "audience",
+        "portrait"
+      ],
+      "dominantColor": "#f8f8f8",
+      "date": "2026-09-25"
+    },
+    {
+      "id": "K-075",
+      "chapterId": "colors",
+      "source": "2026_final/4V8A4191.JPG",
+      "sourceSha256": "09ab029a893ab7902ed86373e98881ab65f37da14e6d3c5b2f050c4d8be6c6b1",
+      "originalWidth": 5464,
+      "originalHeight": 8192,
+      "originalBytes": 14150760,
+      "gallery": {
+        "path": "/images/gallery/k-075-09ab029a893a.webp",
+        "width": 1334,
+        "height": 2000,
+        "bytes": 188824
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-075-09ab029a893a.webp",
+        "width": 2668,
+        "height": 4000,
+        "bytes": 1021436
+      },
+      "title": "A dramatic silhouette",
+      "alt": "K wearing a dark, dramatic layered outfit.",
+      "tags": [
+        "style",
+        "costume",
+        "dramatic"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-09-16"
+    },
+    {
+      "id": "K-076",
+      "chapterId": "closer",
+      "source": "2026_final/4V8A4884.JPG",
+      "sourceSha256": "5ec5805f7de1c220fa4346f4f376e0041f6a7224ca33950bdb4d01e1e17bf79e",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 15502110,
+      "gallery": {
+        "path": "/images/gallery/k-076-5ec5805f7de1.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 216710
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-076-5ec5805f7de1.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 1082666
+      },
+      "title": "A small shared moment",
+      "alt": "K sharing a playful moment with a fellow performer.",
+      "tags": [
+        "connection",
+        "playful",
+        "together"
+      ],
+      "dominantColor": "#180808",
+      "date": "2026-09-27"
+    },
+    {
+      "id": "K-077",
+      "chapterId": "closer",
+      "source": "2026_final/4V8A4887.JPG",
+      "sourceSha256": "de5d4d88b783db5ceecac6139dddb77ad7fe52ed56890f7c0e85da269d5e619b",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 14851590,
+      "gallery": {
+        "path": "/images/gallery/k-077-de5d4d88b783.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 196216
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-077-de5d4d88b783.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 976974
+      },
+      "title": "A small shared moment",
+      "alt": "K sharing a playful moment with a fellow performer.",
+      "tags": [
+        "connection",
+        "playful",
+        "together"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-09-27"
+    },
+    {
+      "id": "K-078",
+      "chapterId": "between",
+      "source": "2026_final/4V8A6871.JPG",
+      "sourceSha256": "9d683e44b12f192995f79d554f3a01bd32ff4fe98bf674f71752544f9762f4ee",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 14801254,
+      "gallery": {
+        "path": "/images/gallery/k-078-9d683e44b12f.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 122102
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-078-9d683e44b12f.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 816320
+      },
+      "title": "Just before the next moment",
+      "alt": "K in a quiet moment away from the stage.",
+      "tags": [
+        "candid",
+        "quiet",
+        "in-between"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-09-28"
+    },
+    {
+      "id": "K-079",
+      "chapterId": "closer",
+      "source": "2026_final/4V8A7304.JPG",
+      "sourceSha256": "2110ce17acb8ad2e6514d623b832903a47d14dda60f45b55e70a8542c117d20d",
+      "originalWidth": 8192,
+      "originalHeight": 5464,
+      "originalBytes": 15078650,
+      "gallery": {
+        "path": "/images/gallery/k-079-2110ce17acb8.webp",
+        "width": 2000,
+        "height": 1334,
+        "bytes": 184998
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-079-2110ce17acb8.webp",
+        "width": 4000,
+        "height": 2668,
+        "bytes": 952362
+      },
+      "title": "A thoughtful gift",
+      "alt": "K holding a small gift during an audience event.",
+      "tags": [
+        "connection",
+        "gift",
+        "playful"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-09-28"
+    },
+    {
+      "id": "K-080",
+      "chapterId": "spotlight",
+      "source": "2026_final/IM1G0743.JPG",
+      "sourceSha256": "9faaffdfcf5bdbaca5636fbbdb5c0ba79a8fce246f7f2d95159e5d68a9c4b0e8",
+      "originalWidth": 5472,
+      "originalHeight": 3648,
+      "originalBytes": 5713592,
+      "gallery": {
+        "path": "/images/gallery/k-080-9faaffdfcf5b.webp",
+        "width": 2000,
+        "height": 1333,
+        "bytes": 174610
+      },
+      "fullscreen": {
+        "path": "/images/fullscreen/k-080-9faaffdfcf5b.webp",
+        "width": 4000,
+        "height": 2667,
+        "bytes": 1162514
+      },
+      "title": "In the spotlight",
+      "alt": "K seated on stage with a microphone.",
+      "tags": [
+        "live",
+        "stage",
+        "portrait"
+      ],
+      "dominantColor": "#080808",
+      "date": "2026-08-13"
+    }
+  ]
+}

@@ -5,3 +5,11 @@ node_modules/
 cookies.txt
 *-cookies.txt
 *_cookies.txt
+.next/
+out/
+*.tsbuildinfo
+playwright-report/
+test-results/
+
+# Large private originals; public derivatives are generated from the explicit manifest.
+/2026_final/
