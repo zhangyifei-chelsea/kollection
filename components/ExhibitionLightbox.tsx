@@ -7,7 +7,7 @@ import { photos } from "@/content/photos";
 export function ExhibitionLightbox() {
   useEffect(() => {
     const lightbox = new PhotoSwipeLightbox({
-      gallery: ".gallery-wall",
+      gallery: ".gallery-wall, [data-photo-gallery]",
       children: "a[data-pswp-src]",
       pswpModule: () => import("photoswipe"),
       loop: false,

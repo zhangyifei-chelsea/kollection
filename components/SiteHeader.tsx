@@ -1,10 +1,10 @@
 "use client";
 import { chapters } from "@/content/exhibition";
-export function SiteHeader() {
+export function SiteHeader({ exhibitionPage = true }: { exhibitionPage?: boolean }) {
   return (
     <header className="site-header page-inset flex items-center justify-between">
       <a
-        href="#entrance"
+        href={exhibitionPage ? "#entrance" : "/#entrance"}
         className="wordmark"
         aria-label="Moments of K — entrance"
       >
@@ -14,8 +14,9 @@ export function SiteHeader() {
         aria-label="Main navigation"
         className="desktop-nav flex items-center gap-10"
       >
-        <a href="#spotlight">Exhibition</a>
-        <a href="#credits">About & credits</a>
+        <a href={exhibitionPage ? "#spotlight" : "/#spotlight"}>Exhibition</a>
+        <a href="/explore">Explore</a>
+        <a href={exhibitionPage ? "#credits" : "/#credits"}>About & credits</a>
         <span className="edition">2026 EDITION</span>
       </nav>
       <details className="mobile-menu">
@@ -30,11 +31,12 @@ export function SiteHeader() {
           }}
         >
           {chapters.map((c) => (
-            <a key={c.id} href={`#${c.id}`}>
+            <a key={c.id} href={`${exhibitionPage ? "" : "/"}#${c.id}`}>
               {String(c.index).padStart(2, "0")} — {c.title}
             </a>
           ))}
-          <a href="#credits">About & credits</a>
+          <a href="/explore">Explore</a>
+          <a href={exhibitionPage ? "#credits" : "/#credits"}>About & credits</a>
         </nav>
       </details>
     </header>
