@@ -210,6 +210,8 @@ for (let index = 0; index < sourceRecords.length; index += 1) {
     dominantColor,
     ...(date ? { date } : {}),
     ...(record.event ? { event: record.event } : {}),
+    ...(record.eventType ? { eventType: record.eventType } : {}),
+    ...(record.captureTime ? { captureTime: record.captureTime } : {}),
     ...(credit ? { credit } : {}),
   };
   generatedAssets.push(asset);
@@ -231,6 +233,8 @@ for (let index = 0; index < sourceRecords.length; index += 1) {
     alt: record.alt,
     ...(date ? { date } : {}),
     ...(record.event ? { event: record.event } : {}),
+    ...(record.eventType ? { eventType: record.eventType } : {}),
+    ...(record.captureTime ? { captureTime: record.captureTime } : {}),
     ...(credit ? { credit } : {}),
     tags: record.tags,
     dominantColor,

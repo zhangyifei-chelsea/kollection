@@ -16,6 +16,10 @@ export type Photo = {
   alt: string;
   title: string;
   event?: string;
+  /** Confirmed event category, separate from editorial content tags. */
+  eventType?: string;
+  /** Confirmed local capture time as curated text; date stays a literal capture date. */
+  captureTime?: string;
   date?: string;
   credit?: string;
   /** Confirmed capture location only; demonstration assignments live separately. */

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 export const metadata: Metadata = {
-  title: "Moments of K — A Birthday Photo Exhibition",
+  title: "Kollection-K / Moments of K",
   description:
-    "A celebration in photographs. Four chapters of light, connection, and the moments in between.",
+    "A calendar-first photographic scrapbook. Discover the moments, piece by piece.",
 };
 export default function RootLayout({
   children,
@@ -12,7 +12,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <a className="skip-link" href="#main">
-          Skip to exhibition
+          Skip to content
         </a>
         {children}
       </body>

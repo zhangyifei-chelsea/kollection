@@ -18,7 +18,9 @@ export const mockLocations: PhotoLocation[] = [
 // MOCK LOCATION DATA: deterministic IDs keep assignments stable when photo order changes.
 export const mockPhotoLocationIds: Record<string, string> = Object.fromEntries(
   photos.map(photo => {
-    const number = Number(photo.id.replace(/\D/g, ''));
-    return [photo.id, mockLocations[(Math.max(1, number) - 1) % mockLocations.length].id];
+    let hash = 2166136261;
+    for (const char of photo.id) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
+    hash = Math.imul(hash ^ (hash >>> 16), 0x45d9f3b);
+    return [photo.id, mockLocations[(hash >>> 0) % mockLocations.length].id];
   }),
 );

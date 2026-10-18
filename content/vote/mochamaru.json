@@ -1,0 +1,12 @@
+{
+  "id": "9c00ba26-4f39-4eca-824e-000000000001",
+  "slug": "mochamaru-edit-2026",
+  "title": "The Mochamaru Edit.",
+  "question": "Which visual/style feels the most Mochamaru?",
+  "options": [
+    { "id": "9c00ba26-4f39-4eca-824e-000000000011", "title": "Soft & Cozy", "description": "Quiet warmth, a familiar smile, a moment to stay with.", "coverImageId": "K-002", "additionalImageIds": [], "displayOrder": 1, "isActive": true },
+    { "id": "9c00ba26-4f39-4eca-824e-000000000012", "title": "Chic & Cool", "description": "An effortless presence. A little edge, beautifully understated.", "coverImageId": "K-021", "additionalImageIds": [], "displayOrder": 2, "isActive": true },
+    { "id": "9c00ba26-4f39-4eca-824e-000000000013", "title": "Playful Days", "description": "The unguarded joy in the spaces between.", "coverImageId": "K-043", "additionalImageIds": [], "displayOrder": 3, "isActive": true },
+    { "id": "9c00ba26-4f39-4eca-824e-000000000014", "title": "Dreamy & Romantic", "description": "Soft light and the feeling of a memory still unfolding.", "coverImageId": "K-062", "additionalImageIds": [], "displayOrder": 4, "isActive": true }
+  ]
+}

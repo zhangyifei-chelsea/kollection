@@ -1,0 +1,15 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const ts = require('typescript');
+const load = (path, deps = {}) => { const out = {}; new Function('exports','require',ts.transpileModule(fs.readFileSync(path,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText)(out,n=>deps[n]); return out; };
+const dates=load('lib/photo-calendar.ts');
+const {monthDays,shiftMonth}=load('lib/archive-calendar.ts',{'./photo-calendar':dates});
+assert.equal(monthDays('2026-02').length,28);
+assert.equal(monthDays('2026-10').length,35);
+assert.equal(monthDays('2026-08').length,42);
+assert.equal(monthDays('2024-02').filter(d=>d.startsWith('2024-02')).length,29);
+assert.equal(monthDays('2026-10')[0],'2026-09-27');
+assert.equal(shiftMonth('2026-01',-1),'2025-12');
+assert.equal(shiftMonth('2026-12',1),'2027-01');
+assert.equal(new Set(monthDays('2026-08')).size,42);
+console.log('PASS: 4/5/6 weeks, leap day, alignment, padding, unique dates, year transitions.');
